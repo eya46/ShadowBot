@@ -1,0 +1,16 @@
+.idea
+.vscode
+DlsBot.iml
+misc.xml
+*/__pycache__
+__pycache__
+*.7z
+*.zip
+/.fleet/*
+*.pyc
+test.*
+*.log
+*/*.db
+
+.env.prod
+.env.dev
