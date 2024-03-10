@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from os import getenv
+
 import nonebot
 from nonebot.adapters.onebot.v11 import Adapter as V11Adapter
 
@@ -25,7 +27,8 @@ nonebot.load_plugin("nonebot_plugin_apscheduler")
 nonebot.load_plugin("nonebot_plugin_orm")
 nonebot.load_plugin("nonebot_plugin_alconna")
 
-nonebot.load_from_toml("pyproject.toml")
+if getenv("ENVIRONMENT") != "dev":
+    nonebot.load_plugin("nonebot_plugin_chatrecorder")
 
 nonebot.load_plugins("src/provider")
 nonebot.load_plugins("src/plugins")

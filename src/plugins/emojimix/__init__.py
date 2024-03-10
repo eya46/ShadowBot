@@ -11,7 +11,7 @@ from nonebot.rule import Rule
 from nonebot.typing import T_State
 from nonebot_plugin_alconna import UniMessage
 
-from shadow.utils.rule import OnlyMe
+from shadow.rule import OnlyMe, UseStart
 from src.provider.error_report import send_error
 from .data_source import mix_emoji
 
@@ -35,7 +35,7 @@ async def check_eomjis(state: T_State, text: str = EventPlainText()) -> bool:
     return False
 
 
-emojimix = on_message(OnlyMe and Rule(check_eomjis), block=False, priority=10)
+emojimix = on_message(OnlyMe & UseStart & Rule(check_eomjis), block=False, priority=10)
 
 
 @emojimix.handle()
