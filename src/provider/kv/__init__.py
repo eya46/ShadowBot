@@ -1,4 +1,5 @@
 from arclet.alconna import Alconna, Args, Arg, Subcommand
+from nonebot import logger
 from nonebot.permission import SUPERUSER
 from nonebot_plugin_alconna import (
     on_alconna,
@@ -24,9 +25,8 @@ _kv = on_alconna(
 @_kv.assign("set")
 @_kv.assign("update")
 async def _set_or_update(name: Match[str] = AlconnaMatch("name"), value: Match[str] = AlconnaMatch("value")):
-    await _kv.finish(
-        f"{'添加' if (await add_kv(name.result, value.result)) else '更新'} {name.result} 成功"
-    )
+    logger.success(f"{'添加' if (await add_kv(name.result, value.result)) else '更新'} {name.result} 成功")
+    return True
 
 
 @_kv.assign("get")
@@ -39,7 +39,8 @@ async def _get(name: Match[str] = AlconnaMatch("name")):
 
 @_kv.assign("del")
 async def _del(name: Match[str] = AlconnaMatch("name")):
-    await _kv.finish(f"key:\n{name.result}\n删除 {'成功' if await del_kv(name.result, commit=True) else '失败'}")
+    logger.success(f"key:\n{name.result}\n删除 {'成功' if await del_kv(name.result, commit=True) else '失败'}")
+    return True
 
 
 @_kv.assign("all")

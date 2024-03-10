@@ -3,22 +3,17 @@
 
 import asyncio
 import traceback
-
-from nonebot import on_command
-from nonebot.adapters.onebot.v11 import Message
-from nonebot.log import logger
-from nonebot.matcher import Matcher
-from nonebot.params import CommandArg
-from nonebot.typing import T_Handler
-
 from dataclasses import dataclass
 from difflib import SequenceMatcher
 from typing import Any, Dict, List, Optional, Protocol, Tuple
 
 import httpx
-from nonebot.adapters.onebot.v11 import MessageSegment
-
-from shadow.utils.send import Tap
+from nonebot import on_command
+from nonebot.adapters.onebot.v11 import Message, MessageSegment
+from nonebot.log import logger
+from nonebot.matcher import Matcher
+from nonebot.params import CommandArg
+from nonebot.typing import T_Handler
 
 
 async def search_qq(keyword: str) -> Optional[MessageSegment]:
@@ -254,7 +249,7 @@ def create_matchers():
                 logger.warning(traceback.format_exc())
                 res = "出错了，请稍后再试"
             if res:
-                return await Tap()
+                return True
 
         return handler
 
@@ -282,7 +277,7 @@ async def handler(matcher: Matcher, msg: Message = CommandArg()):
         if res:
             await matcher.finish(res)
     if not res:
-        await Tap()
+        return True
 
 
 on_command("点歌", block=True, priority=12).append_handler(handler)

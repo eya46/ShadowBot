@@ -1,14 +1,33 @@
-from typing import Set, Type, Tuple, Union, Optional, Dict, Any
+from typing import Set, Type, Tuple, Union, Optional, Dict, Any, Iterable
 
 import nonebot
 from nonebot import on_message
 from nonebot.adapters.onebot.v11 import Bot, PrivateMessageEvent
+from nonebot.dependencies import Dependent
 from nonebot.internal.matcher import Matcher, current_event
 from nonebot.internal.rule import Rule
 from nonebot.rule import command
-from nonebot.typing import T_RuleChecker
+from nonebot.typing import T_RuleChecker, T_Handler
 
+from shadow.exception import catch
 from shadow.rule import OnlyMe
+
+
+@classmethod
+def append_handler(
+        cls, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None
+) -> Dependent[Any]:
+    handler = catch(handler)
+    handler_ = Dependent[Any].parse(
+        call=handler,
+        parameterless=parameterless,
+        allow_types=cls.HANDLER_PARAM_TYPES,
+    )
+    cls.handlers.append(handler_)
+    return handler_
+
+
+Matcher.append_handler = append_handler
 
 
 def _on_command(
