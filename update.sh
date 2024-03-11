@@ -1,3 +1,3 @@
 #!/bin/bash
 git pull
-poetry install
+poetry install --no-root
