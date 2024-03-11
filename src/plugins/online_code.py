@@ -116,7 +116,7 @@ runcode = on_command('code', priority=5)
 async def runcode_body(bot: Bot, event: GroupMessageEvent, arg: Message = CommandArg()):
     code = str(arg).strip()
     res = await run(code)
-    return await bot.call_api(
+    await bot.call_api(
         "send_group_forward_msg",
         group_id=event.group_id,
         messages={
