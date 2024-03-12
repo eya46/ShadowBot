@@ -12,8 +12,8 @@ from .utils import add_kv, get_kv, del_kv, all_kv
 _kv = on_alconna(
     Alconna(
         "kv",
-        Subcommand("set", Args["name", str]["value", str]),
-        Subcommand("update", Args["name", str]["value", str]),
+        Subcommand("set", Args["name", str], Arg("value", str, seps="\n")),
+        Subcommand("update", Args["name", str], Arg("value", str, seps="\n")),
         Subcommand("get", Arg("name", str)),
         Subcommand("del", Arg("name", str)),
         Subcommand("all")

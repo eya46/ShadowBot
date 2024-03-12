@@ -2,7 +2,8 @@ from asyncio import iscoroutinefunction
 from functools import wraps
 from traceback import print_exc
 
-from nonebot.exception import SkippedException, NoneBotException
+from nonebot import logger
+from nonebot.exception import SkippedException, NoneBotException, ActionFailed
 from nonebot.utils import run_sync
 
 from shadow.utils.send import Tap
@@ -27,7 +28,7 @@ def catch(func):
         except SkippedException:
             raise
         except Exception as e:
-            if type(e) in [ActionError, NoneBotException]:
+            if isinstance(e, ActionError) or (isinstance(e, NoneBotException) and not isinstance(e, ActionFailed)):
                 raise e
             print_exc()
             raise ActionError(e) from e

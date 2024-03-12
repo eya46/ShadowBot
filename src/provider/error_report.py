@@ -1,5 +1,8 @@
+from typing import Any
+
+from httpx import AsyncClient
 from nonebot import require
-from nonebot.exception import ActionFailed
+from nonebot.exception import ActionFailed, NoneBotException
 from nonebot.message import run_postprocessor
 from nonebot_plugin_alconna import UniMessage, Target
 from nonebot_plugin_alconna.uniseg import Receipt
@@ -10,6 +13,22 @@ from shadow.utils.send import Tap
 require("kv")
 
 from src.provider.kv.utils import get_value
+
+
+async def send_to_feishu(msg: Any | UniMessage):
+    if isinstance(msg, UniMessage):
+        msg = msg.extract_plain_text()
+
+    async with AsyncClient() as client:
+        await client.post(
+            await get_value("error_api_feishu"),
+            json={
+                "msg_type": "text",
+                "content": {
+                    "text": str(msg)
+                }
+            }
+        )
 
 
 async def send_error(msg: str | UniMessage) -> Receipt:
@@ -25,9 +44,8 @@ async def _catch1(error: ActionError | ActionFailed):
     if isinstance(error, ActionError):
         try:
             await UniMessage(error.msg).send(target=Target(id=await get_value("error_group")))
-        except:
-            await Tap()
-            await Tap()
+        except NoneBotException:
+            await send_to_feishu(error.msg)
     else:
         await Tap()
         await Tap()
