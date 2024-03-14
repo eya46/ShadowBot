@@ -11,11 +11,12 @@ from nonebot.typing import T_RuleChecker, T_Handler
 
 from shadow.exception import catch
 from shadow.rule import OnlyMe
+from shadow.utils.patch import impl
 
 
-@classmethod
+@impl(Matcher, classmethod)
 def append_handler(
-        cls, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None
+        cls: Matcher, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None
 ) -> Dependent[Any]:
     handler = catch(handler)
     handler_ = Dependent[Any].parse(
@@ -27,10 +28,8 @@ def append_handler(
     return handler_
 
 
-Matcher.append_handler = append_handler
-
-
-def _on_command(
+@impl(nonebot)
+def on_command(
         cmd: Union[str, Tuple[str, ...]],
         rule: Optional[Union[Rule, T_RuleChecker]] = None,
         aliases: Optional[Set[Union[str, Tuple[str, ...]]]] = None,
@@ -64,9 +63,6 @@ def _on_command(
         **kwargs,
         _depth=_depth + 1,  # type:ignore
     )
-
-
-nonebot.on_command = _on_command
 
 
 @Bot.on_calling_api
