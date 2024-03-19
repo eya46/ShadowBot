@@ -23,6 +23,7 @@ driver.register_adapter(V11Adapter)
 
 nonebot.load_plugins("src/pre")
 
+nonebot.load_plugin("nonebot_plugin_sentry")
 nonebot.load_plugin("nonebot_plugin_apscheduler")
 nonebot.load_plugin("nonebot_plugin_orm")
 nonebot.load_plugin("nonebot_plugin_alconna")
