@@ -1,7 +1,7 @@
 from nonebot import get_driver
-from nonebot.adapters.onebot.v11 import MessageEvent
-from nonebot.permission import SuperUser
 from nonebot.rule import Rule
+from nonebot.permission import SuperUser
+from nonebot.adapters.onebot.v11 import MessageEvent
 
 from shadow.utils.const import SUPERUSERS
 

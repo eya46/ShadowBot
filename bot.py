@@ -1,20 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 from os import getenv
 
 import nonebot
+from nonebot.log import logger, default_format
 from nonebot.adapters.onebot.v11 import Adapter as V11Adapter
 
-from nonebot.log import logger, default_format
-
-logger.add(
-    "log/error.log",
-    rotation="00:00",
-    diagnose=False,
-    level="ERROR",
-    format=default_format
-)
+logger.add("log/error.log", rotation="00:00", diagnose=False, level="ERROR", format=default_format)
 
 nonebot.init()
 

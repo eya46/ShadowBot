@@ -1,8 +1,7 @@
 from typing import Annotated
 
-from wakeonlan import send_magic_packet
-
 from nonebot import on_command
+from wakeonlan import send_magic_packet
 
 from shadow.utils.send import Tap
 from src.provider.kv.utils import GetValue

@@ -2,9 +2,8 @@ from asyncio import iscoroutinefunction
 from functools import wraps
 from traceback import print_exc
 
-from nonebot import logger
-from nonebot.exception import SkippedException, NoneBotException, ActionFailed
 from nonebot.utils import run_sync
+from nonebot.exception import ActionFailed, NoneBotException, SkippedException
 
 from shadow.utils.send import Tap
 

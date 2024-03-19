@@ -30,6 +30,9 @@ pydantic = "~2"
 nonebot-plugin-sentry = "^1.1.0"
 
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.3"
+
 [tool.nonebot]
 plugins = ["nonebot_plugin_chatrecorder"]
 
@@ -38,6 +41,21 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-ignore = ["E402"]
-
 line-length = 121
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q", "I"]
+ignore = [
+    "E402", # 导包位置
+    "E722", # 空except
+    "C901", # 复杂函数名
+]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+length-sort = true
+force-sort-within-sections = true

@@ -1,9 +1,9 @@
-from typing import Optional, List
+from typing import Optional
 
-from nonebot.internal.matcher import Matcher
+from sqlalchemy import select, update
 from nonebot.params import Depends
 from nonebot_plugin_orm import get_session
-from sqlalchemy import select, update
+from nonebot.internal.matcher import Matcher
 
 from .model import KV
 
@@ -54,7 +54,7 @@ async def get_value(key: str) -> Optional[str]:
         return kv.value if (kv := await session.get(KV, str(key))) else None
 
 
-async def all_kv() -> List[KV]:
+async def all_kv() -> list[KV]:
     async with get_session() as session:
         return list((await session.scalars(select(KV))).all())
 

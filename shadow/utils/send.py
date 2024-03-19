@@ -1,6 +1,5 @@
+from nonebot.matcher import current_event, current_matcher
 from nonebot.adapters.onebot.v11 import MessageSegment
-
-from nonebot.matcher import current_matcher, current_event
 
 
 async def Tap():

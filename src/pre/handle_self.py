@@ -1,5 +1,5 @@
 from nonebot import on
-from nonebot.adapters.onebot.v11 import Event, Bot, PrivateMessageEvent, GroupMessageEvent
+from nonebot.adapters.onebot.v11 import Bot, Event, GroupMessageEvent, PrivateMessageEvent
 
 
 @on("message_sent", block=True).handle()

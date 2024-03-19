@@ -5,22 +5,21 @@
 import re
 
 import emoji
-from nonebot import on_message, get_driver
-from nonebot.params import EventPlainText
+from nonebot import get_driver, on_message
 from nonebot.rule import Rule
+from nonebot.params import EventPlainText
 from nonebot.typing import T_State
 from nonebot_plugin_alconna import UniMessage
 
 from shadow.rule import OnlyMe, UseStart
 from src.provider.error_report import send_error
+
 from .data_source import mix_emoji
 
 command_start = " ".join(get_driver().config.command_start)
 emojis = filter(lambda e: len(e) == 1, emoji.EMOJI_DATA.keys())
 emoji_pattern = "(" + "|".join(re.escape(e) for e in emojis) + ")"
-pattern = re.compile(
-    rf"^\s*(?P<code1>{emoji_pattern})\s*\+\s*(?P<code2>{emoji_pattern})\s*$"
-)
+pattern = re.compile(rf"^\s*(?P<code1>{emoji_pattern})\s*\+\s*(?P<code2>{emoji_pattern})\s*$")
 
 
 async def check_eomjis(state: T_State, text: str = EventPlainText()) -> bool:

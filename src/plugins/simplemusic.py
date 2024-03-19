@@ -1,19 +1,19 @@
 # MIT
 # https://github.com/noneplugin/nonebot-plugin-simplemusic
 
+from typing import Any, Optional, Protocol
 import asyncio
+from difflib import SequenceMatcher
 import traceback
 from dataclasses import dataclass
-from difflib import SequenceMatcher
-from typing import Any, Dict, List, Optional, Protocol, Tuple
 
 import httpx
 from nonebot import on_command
-from nonebot.adapters.onebot.v11 import Message, MessageSegment
 from nonebot.log import logger
-from nonebot.matcher import Matcher
 from nonebot.params import CommandArg
 from nonebot.typing import T_Handler
+from nonebot.matcher import Matcher
+from nonebot.adapters.onebot.v11 import Message, MessageSegment
 
 
 async def search_qq(keyword: str) -> Optional[MessageSegment]:
@@ -33,7 +33,7 @@ async def search_qq(keyword: str) -> Optional[MessageSegment]:
     async with httpx.AsyncClient() as client:
         resp = await client.get(url, params=params)
         result = resp.json()
-    songs: List[Dict[str, str]] = result["data"]["song"]["itemlist"]
+    songs: list[dict[str, str]] = result["data"]["song"]["itemlist"]
     if songs:
         songs.sort(
             key=lambda x: SequenceMatcher(None, keyword, x["name"]).ratio(),
@@ -48,7 +48,7 @@ async def search_163(keyword: str) -> Optional[MessageSegment]:
     async with httpx.AsyncClient() as client:
         resp = await client.post(url, params=params)
         result = resp.json()
-    songs: List[Dict[str, Any]] = result["result"]["songs"]
+    songs: list[dict[str, Any]] = result["result"]["songs"]
     if songs:
         songs.sort(
             key=lambda x: SequenceMatcher(None, keyword, x["name"]).ratio(),
@@ -73,7 +73,7 @@ async def search_kuwo(keyword: str) -> Optional[MessageSegment]:
         resp = await client.get(search_url, params=params)
         result = resp.json()
 
-        songs: List[Dict[str, Any]] = result["abslist"]
+        songs: list[dict[str, Any]] = result["abslist"]
         if songs:
             songs.sort(
                 key=lambda x: SequenceMatcher(None, keyword, x["SONGNAME"]).ratio(),
@@ -95,7 +95,7 @@ async def search_kuwo(keyword: str) -> Optional[MessageSegment]:
                     "br": "128kmp3",
                 }
                 resp = httpx.get(play_url, params=params)
-                result: Dict = resp.json()
+                result: dict = resp.json()
 
                 if data := result.get("data"):
                     return MessageSegment(
@@ -125,7 +125,7 @@ async def search_kugou(keyword: str) -> Optional[MessageSegment]:
         resp = await client.get(search_url, params=params)
         result = resp.json()
 
-        songs: List[Dict[str, Any]] = result["data"]["info"]
+        songs: list[dict[str, Any]] = result["data"]["info"]
         if songs:
             songs.sort(
                 key=lambda x: SequenceMatcher(None, keyword, x["songname"]).ratio(),
@@ -160,7 +160,7 @@ async def search_migu(keyword: str) -> Optional[MessageSegment]:
     async with httpx.AsyncClient() as client:
         resp = await client.get(url, params=params, headers=headers)
         result = resp.json()
-    songs: List[Dict[str, Any]] = dict(result).get("musics", [])
+    songs: list[dict[str, Any]] = dict(result).get("musics", [])
     if songs:
         songs.sort(
             key=lambda x: SequenceMatcher(None, keyword, x["title"]).ratio(),
@@ -187,7 +187,7 @@ async def search_bili(keyword: str) -> Optional[MessageSegment]:
     async with httpx.AsyncClient() as client:
         resp = await client.get(search_url, params=params)
         result = resp.json()
-    songs: List[Dict[str, Any]] = result["data"]["result"]
+    songs: list[dict[str, Any]] = result["data"]["result"]
     if songs:
         songs.sort(
             key=lambda x: SequenceMatcher(None, keyword, x["title"]).ratio(),
@@ -198,14 +198,13 @@ async def search_bili(keyword: str) -> Optional[MessageSegment]:
 
 
 class Func(Protocol):
-    async def __call__(self, keyword: str) -> Optional[MessageSegment]:
-        ...
+    async def __call__(self, keyword: str) -> Optional[MessageSegment]: ...
 
 
 @dataclass
 class Source:
     name: str
-    keywords: Tuple[str, ...]
+    keywords: tuple[str, ...]
     func: Func
 
 
@@ -254,9 +253,9 @@ def create_matchers():
         return handler
 
     for source in sources:
-        on_command(
-            source.keywords[0], aliases=set(source.keywords), block=True, priority=12
-        ).append_handler(create_handler(source))
+        on_command(source.keywords[0], aliases=set(source.keywords), block=True, priority=12).append_handler(
+            create_handler(source)
+        )
 
 
 create_matchers()

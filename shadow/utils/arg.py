@@ -1,7 +1,7 @@
 from functools import partial
 
-from nonebot.internal.params import Depends
 from nonebot.matcher import current_matcher
+from nonebot.internal.params import Depends
 
 from shadow.utils.const import OT
 

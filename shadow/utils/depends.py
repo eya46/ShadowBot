@@ -1,10 +1,10 @@
-from typing import Sequence
+from collections.abc import Sequence
 
-from arclet.alconna import Arparma
-from nonebot.internal.params import Depends
-from nonebot_plugin_alconna import AlconnaMatches, UniMsg
-from nonebot_plugin_orm import async_scoped_session
 from sqlalchemy import Executable
+from arclet.alconna import Arparma
+from nonebot_plugin_orm import async_scoped_session
+from nonebot_plugin_alconna import UniMsg, AlconnaMatches
+from nonebot.internal.params import Depends
 
 
 def assert_dep(path: str, sql: Executable):

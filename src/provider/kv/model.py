@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Mapped, mapped_column
-
 from nonebot_plugin_orm import Model
 
 
@@ -10,8 +9,8 @@ class KV(Model):
     value: Mapped[str]
 
 
-if __name__ == '__main__' or True:
-    from sqlalchemy.schema import CreateTable
+if __name__ == "__main__" or True:
     from nonebot import logger
+    from sqlalchemy.schema import CreateTable
 
     logger.debug(CreateTable(KV.__table__))

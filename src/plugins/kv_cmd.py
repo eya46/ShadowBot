@@ -1,9 +1,9 @@
 from io import StringIO
 
-from nonebot import on_command, get_driver, logger
-from nonebot.internal.adapter import Message
-from nonebot.params import CommandArg
+from nonebot import logger, get_driver, on_command
 from nonebot.utils import run_sync
+from nonebot.params import CommandArg
+from nonebot.internal.adapter import Message
 
 from src.provider.kv.utils import get_value
 
@@ -12,11 +12,7 @@ cmd_start = list(get_driver().config.command_start)
 
 def _print(*args, **kwargs):
     _ = StringIO()
-    print(
-        *args,
-        **kwargs,
-        file=_
-    )
+    print(*args, **kwargs, file=_)
     logger.info(_.getvalue().strip())
 
 

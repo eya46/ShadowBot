@@ -1,13 +1,9 @@
-from arclet.alconna import Alconna, Args, Arg, Subcommand
 from nonebot import logger
+from arclet.alconna import Arg, Args, Alconna, Subcommand
 from nonebot.permission import SUPERUSER
-from nonebot_plugin_alconna import (
-    on_alconna,
-    Match,
-    AlconnaMatch
-)
+from nonebot_plugin_alconna import Match, AlconnaMatch, on_alconna
 
-from .utils import add_kv, get_kv, del_kv, all_kv
+from .utils import add_kv, all_kv, del_kv, get_kv
 
 _kv = on_alconna(
     Alconna(
@@ -16,9 +12,9 @@ _kv = on_alconna(
         Subcommand("update", Args["name", str], Arg("value", str, seps="\n")),
         Subcommand("get", Arg("name", str)),
         Subcommand("del", Arg("name", str)),
-        Subcommand("all")
+        Subcommand("all"),
     ),
-    permission=SUPERUSER
+    permission=SUPERUSER,
 )
 
 

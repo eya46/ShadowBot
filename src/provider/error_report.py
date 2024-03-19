@@ -2,9 +2,9 @@ from typing import Any
 
 from httpx import AsyncClient
 from nonebot import require
-from nonebot.exception import ActionFailed, NoneBotException
 from nonebot.message import run_postprocessor
-from nonebot_plugin_alconna import UniMessage, Target
+from nonebot.exception import ActionFailed, NoneBotException
+from nonebot_plugin_alconna import Target, UniMessage
 from nonebot_plugin_alconna.uniseg import Receipt
 
 from shadow.exception import ActionError
@@ -20,15 +20,7 @@ async def send_to_feishu(msg: Any | UniMessage):
         msg = msg.extract_plain_text()
 
     async with AsyncClient() as client:
-        await client.post(
-            await get_value("error_api_feishu"),
-            json={
-                "msg_type": "text",
-                "content": {
-                    "text": str(msg)
-                }
-            }
-        )
+        await client.post(await get_value("error_api_feishu"), json={"msg_type": "text", "content": {"text": str(msg)}})
 
 
 async def send_error(msg: str | UniMessage) -> Receipt:

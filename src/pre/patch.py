@@ -1,23 +1,22 @@
-from typing import Set, Type, Tuple, Union, Optional, Dict, Any, Iterable
+from typing import Any, Union, Optional
+from collections.abc import Iterable
 
 import nonebot
 from nonebot import on_message
-from nonebot.adapters.onebot.v11 import Bot, PrivateMessageEvent
-from nonebot.dependencies import Dependent
-from nonebot.internal.matcher import Matcher, current_event
-from nonebot.internal.rule import Rule
 from nonebot.rule import command
-from nonebot.typing import T_RuleChecker, T_Handler
+from nonebot.typing import T_Handler, T_RuleChecker
+from nonebot.dependencies import Dependent
+from nonebot.internal.rule import Rule
+from nonebot.internal.matcher import Matcher, current_event
+from nonebot.adapters.onebot.v11 import Bot, PrivateMessageEvent
 
-from shadow.exception import catch
 from shadow.rule import OnlyMe
+from shadow.exception import catch
 from shadow.utils.patch import impl
 
 
 @impl(Matcher, classmethod)
-def append_handler(
-        cls: Matcher, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None
-) -> Dependent[Any]:
+def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None) -> Dependent[Any]:
     handler = catch(handler)
     handler_ = Dependent[Any].parse(
         call=handler,
@@ -30,13 +29,13 @@ def append_handler(
 
 @impl(nonebot)
 def on_command(
-        cmd: Union[str, Tuple[str, ...]],
-        rule: Optional[Union[Rule, T_RuleChecker]] = None,
-        aliases: Optional[Set[Union[str, Tuple[str, ...]]]] = None,
-        force_whitespace: Optional[Union[str, bool]] = None,
-        _depth: int = 0,
-        **kwargs,
-) -> Type[Matcher]:
+    cmd: Union[str, tuple[str, ...]],
+    rule: Optional[Union[Rule, T_RuleChecker]] = None,
+    aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,
+    force_whitespace: Optional[Union[str, bool]] = None,
+    _depth: int = 0,
+    **kwargs,
+) -> type[Matcher]:
     """注册一个消息事件响应器，并且当消息以指定命令开头时响应。
 
     命令匹配规则参考: `命令形式匹配 <rule.md#command-command>`_
@@ -66,7 +65,7 @@ def on_command(
 
 
 @Bot.on_calling_api
-async def path_send(bot: Bot, api: str, data: Dict[str, Any]):
+async def path_send(bot: Bot, api: str, data: dict[str, Any]):
     if api not in ["send_msg", "send_private_msg"]:
         return
     event = current_event.get()
