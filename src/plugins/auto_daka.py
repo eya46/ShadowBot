@@ -17,4 +17,4 @@ async def _(bot: Bot = None, groups: Annotated[str, GetValue("auto_daka")] = Non
     if groups is None:
         groups = await get_value("auto_daka")
 
-    return await gather(bot.call_api("send_group_sign", group_id=i) for i in map(int, groups.split(",")))
+    return await gather(*[bot.call_api("send_group_sign", group_id=i) for i in map(int, groups.split(","))])
