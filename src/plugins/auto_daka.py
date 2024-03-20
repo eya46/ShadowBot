@@ -1,4 +1,5 @@
 from typing import Annotated
+from asyncio import gather
 
 from nonebot import get_bot, on_command
 from nonebot_plugin_apscheduler import scheduler
@@ -15,6 +16,5 @@ async def _(bot: Bot = None, groups: Annotated[str, GetValue("auto_daka")] = Non
         bot = get_bot(SUPERUSERS[0])
     if groups is None:
         groups = await get_value("auto_daka")
-    for i in map(int, groups.split(",")):
-        await bot.call_api("send_group_sign", group_id=i)
-    return True
+
+    return await gather(bot.call_api("send_group_sign", group_id=i) for i in map(int, groups.split(",")))
