@@ -13,7 +13,7 @@ from src.provider.kv.utils import GetValue, get_value
 @scheduler.scheduled_job("cron", day="*", hour=0, name="自动群打卡")
 async def _(bot: Bot = None, groups: Annotated[str, GetValue("auto_daka")] = None):
     if bot is None:
-        bot = get_bot(SUPERUSERS[0])
+        bot = get_bot(list(SUPERUSERS)[0])
     if groups is None:
         groups = await get_value("auto_daka")
 
