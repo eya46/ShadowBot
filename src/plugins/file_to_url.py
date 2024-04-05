@@ -15,10 +15,11 @@ async def _(bot: Bot, event: GroupMessageEvent):
             resp = await bot.call_api(
                 "get_group_file_url",
                 group_id=event.group_id,
-                file_id=i.data.get("file_id"),
+                file_id=i.data.get("path"),
                 busid=i.data.get("busid"),
                 fname=i.data.get("name")
             )
-            urls.append(resp.url)
-
-    await UniMessage("\n\n".join(urls)).send()
+            if url := resp.get("url"):
+                urls.append(url)
+    if len(urls) > 0:
+        await UniMessage("\n\n".join(urls)).send()
