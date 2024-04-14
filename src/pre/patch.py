@@ -65,7 +65,7 @@ def on_command(
 
 
 @Bot.on_calling_api
-async def path_send(bot: Bot, api: str, data: dict[str, Any]):
+async def patch_send(bot: Bot, api: str, data: dict[str, Any]):
     if api not in ["send_msg", "send_private_msg"]:
         return
     event = current_event.get()
