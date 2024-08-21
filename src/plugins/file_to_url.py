@@ -17,7 +17,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
                 group_id=event.group_id,
                 file_id=i.data.get("path"),
                 busid=i.data.get("busid"),
-                fname=i.data.get("name")
+                fname=i.data.get("name"),
             )
             if url := resp.get("url"):
                 urls.append(url)
