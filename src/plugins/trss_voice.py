@@ -78,16 +78,21 @@ async def split(state: T_State, text: str = EventPlainText()) -> bool:
     if len(_) != 2:
         return False
     if _[0] not in speakers:
-        raise ActionError("没有该角色")
-    state["speaker"] = speakers.index(_[0])
-    state["text"] = _[1]
+        state["speaker"] = None
+        state["text"] = None
+    else:
+        state["speaker"] = speakers.index(_[0])
+        state["text"] = _[1]
     return True
 
 
-@on_message(block=False, priority=50, rule=OnlyMe & UseStart & Rule(split)).handle()
+@on_message(rule=(OnlyMe & UseStart & Rule(split)), block=False, priority=50).handle()
 async def _(event: Event, matcher: Matcher, state: T_State, voice_api: Annotated[str, GetValue("voice_api")]):
     speaker: int = state["speaker"]
     text: str = state["text"]
+
+    if speaker is None or text is None:
+        raise ActionError("无法识别发言者")
 
     await matcher.send(
         MessageSegment.record(
