@@ -38,6 +38,7 @@ async def _catch1(error: ActionError | ActionFailed):
             await UniMessage(error.msg).send(target=Target(id=await get_value("error_group")))
         except NoneBotException:
             await send_to_feishu(error.msg)
+        await DoFail()
     else:
         await DoFail()
 
