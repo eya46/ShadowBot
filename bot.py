@@ -14,17 +14,21 @@ driver = nonebot.get_driver()
 driver.register_adapter(V11Adapter)
 
 nonebot.load_plugins("src/pre")
+logger.success("加载完成: src/pre")
 
 nonebot.load_plugin("nonebot_plugin_sentry")
 nonebot.load_plugin("nonebot_plugin_apscheduler")
 nonebot.load_plugin("nonebot_plugin_orm")
 nonebot.load_plugin("nonebot_plugin_alconna")
+logger.success("加载完成: pip/packages")
 
 if getenv("ENVIRONMENT") != "dev":
     nonebot.load_plugin("nonebot_plugin_chatrecorder")
 
 nonebot.load_plugins("src/provider")
+logger.success("加载完成: src/provider")
 nonebot.load_plugins("src/plugins")
+logger.success("加载完成: src/plugins")
 
 if __name__ == "__main__":
     nonebot.run()

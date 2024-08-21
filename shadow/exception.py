@@ -5,7 +5,7 @@ from traceback import print_exc
 from nonebot.utils import run_sync
 from nonebot.exception import ActionFailed, NoneBotException, SkippedException
 
-from shadow.utils.send import Tap
+from shadow.utils.send import DoSuccess
 
 
 class ActionError(Exception):
@@ -21,7 +21,7 @@ def catch(func):
         try:
             ret = await func(*args, **kwargs)
             if ret:
-                await Tap()
+                await DoSuccess()
                 raise SkippedException()
             return ret
         except SkippedException:

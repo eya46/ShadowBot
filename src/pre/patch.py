@@ -4,15 +4,21 @@ from collections.abc import Iterable
 import nonebot
 from nonebot import on_message
 from nonebot.rule import command
-from nonebot.typing import T_Handler, T_RuleChecker
+from nonebot.typing import T_State, T_Handler, T_RuleChecker
 from nonebot.dependencies import Dependent
 from nonebot.internal.rule import Rule
+from nonebot.internal.params import Depends
 from nonebot.internal.matcher import Matcher, current_event
-from nonebot.adapters.onebot.v11 import Bot, PrivateMessageEvent
+from nonebot.adapters.onebot.v11 import Bot, Event, MessageEvent, PrivateMessageEvent
 
 from shadow.rule import OnlyMe
 from shadow.exception import catch
 from shadow.utils.patch import impl
+
+
+async def set_message_id(event: Event, state: T_State):
+    if isinstance(event, MessageEvent):
+        state["_message_id"] = event.message_id
 
 
 @impl(Matcher, classmethod)
@@ -20,7 +26,7 @@ def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Ite
     handler = catch(handler)
     handler_ = Dependent[Any].parse(
         call=handler,
-        parameterless=parameterless,
+        parameterless=[Depends(set_message_id), *parameterless] if parameterless else [Depends(set_message_id)],
         allow_types=cls.HANDLER_PARAM_TYPES,
     )
     cls.handlers.append(handler_)
@@ -29,12 +35,12 @@ def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Ite
 
 @impl(nonebot)
 def on_command(
-    cmd: Union[str, tuple[str, ...]],
-    rule: Optional[Union[Rule, T_RuleChecker]] = None,
-    aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,
-    force_whitespace: Optional[Union[str, bool]] = None,
-    _depth: int = 0,
-    **kwargs,
+        cmd: Union[str, tuple[str, ...]],
+        rule: Optional[Union[Rule, T_RuleChecker]] = None,
+        aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,
+        force_whitespace: Optional[Union[str, bool]] = None,
+        _depth: int = 0,
+        **kwargs,
 ) -> type[Matcher]:
     """注册一个消息事件响应器，并且当消息以指定命令开头时响应。
 

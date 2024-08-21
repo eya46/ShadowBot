@@ -8,7 +8,7 @@ from nonebot_plugin_alconna import Target, UniMessage
 from nonebot_plugin_alconna.uniseg import Receipt
 
 from shadow.exception import ActionError
-from shadow.utils.send import Tap
+from shadow.utils.send import DoFail
 
 require("kv")
 
@@ -39,5 +39,5 @@ async def _catch1(error: ActionError | ActionFailed):
         except NoneBotException:
             await send_to_feishu(error.msg)
     else:
-        await Tap()
-        await Tap()
+        await DoFail()
+
