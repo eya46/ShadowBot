@@ -47,6 +47,7 @@ async def _():
     if times < 5:
         logger.info("napcat等待少于5分钟")
         return
+    times = 0
 
     logger.debug("尝试启动napcat")
 
