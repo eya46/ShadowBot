@@ -1,5 +1,3 @@
-import time
-
 from nonebot import logger, get_bots, get_driver
 from nonebot_plugin_apscheduler import scheduler
 from nonebot.adapters.onebot.v11 import Bot
@@ -22,15 +20,14 @@ async def auto_stop(bot: Bot):
     instance_id = await get_value("napcat_instanceId")
 
     app = PanelApp(api, token)
-    config = await app.api_instance(instance_id, daemon_id)
-    last_time: int = config["data"]["config"]["lastDatetime"]
 
-    if time.time() - last_time / 1000 < 60 * 5:
-        # 小于5分钟判定为napcat
-        logger.info("判定为napcat，不自动停止")
+    info = await bot.get_version_info()
+
+    if info.get("app_name") == "NapCat.Onebot":
+        logger.info("判断为NapCat.Onebot, 不自动停止")
         return
 
-    logger.info("判定为非napcat，自动停止")
+    logger.info("判断为PC上线, 自动停止")
     await app.api_protected_instance_stop(instance_id, daemon_id)
 
 
@@ -65,3 +62,32 @@ async def _():
     res = await app.api_protected_instance_open(instance_id, daemon_id)
 
     logger.info(f"napcat启动结果: [{res['status']}] {res['data']}")
+
+
+@scheduler.scheduled_job("cron", minute="*/1", name="napcat自动关闭")
+async def __():
+    bots = get_bots()
+
+    for bid, bot in bots.items():
+        if bid not in superusers:
+            continue
+
+        info = await bot.get_version_info()
+
+        if info.get("app_name") != "NapCat.Onebot":
+            continue
+
+        try:
+            data: list = await bot.call_api("get_robot_uin_range")
+            if len(data) == 0:
+                continue
+        except Exception as e:
+            logger.error(f"在线测试失败: [{type(e)}]{e}")
+
+        api = await get_value("mcsm_api")
+        token = await get_value("mcsm_token")
+        daemon_id = await get_value("napcat_daemonId")
+        instance_id = await get_value("napcat_instanceId")
+
+        app = PanelApp(api, token)
+        await app.api_protected_instance_stop(instance_id, daemon_id)
