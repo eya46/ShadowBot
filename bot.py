@@ -18,8 +18,11 @@ logger.success("加载完成: src/pre")
 
 nonebot.load_plugin("nonebot_plugin_sentry")
 nonebot.load_plugin("nonebot_plugin_apscheduler")
+nonebot.load_plugin("nonebot_plugin_datastore")
+nonebot.load_plugin("nonebot_plugin_htmlrender")
 nonebot.load_plugin("nonebot_plugin_orm")
 nonebot.load_plugin("nonebot_plugin_alconna")
+nonebot.load_plugin("nonebot_plugin_wakatime")
 logger.success("加载完成: pip/packages")
 
 if getenv("ENVIRONMENT") != "dev":
