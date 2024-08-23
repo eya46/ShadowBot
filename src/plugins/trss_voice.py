@@ -97,8 +97,12 @@ async def _(event: Event, matcher: Matcher, state: T_State, voice_api: Annotated
     await matcher.send(
         MessageSegment.record(
             str(
-                URL(voice_api)
-                / f"?user_id={event.get_user_id()}&bot_id={event.get_user_id()}&id={speaker}&text={quote(text)}"
+                URL(voice_api).with_query({
+                    "user_id": event.get_user_id(),
+                    "bot_id": event.get_user_id(),
+                    "id": speaker,
+                    "text": text
+                })
             )
         )
     )
