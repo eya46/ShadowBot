@@ -8,6 +8,7 @@ from shadow.utils.const import SUPERUSERS
 
 @event_preprocessor
 def _(bot: Bot):
+    # 只处理 V11Bot & SUPERUSERS 的消息
     if isinstance(bot, V11Bot) and bot.self_id in SUPERUSERS:
         return
 
