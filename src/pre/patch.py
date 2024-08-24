@@ -4,6 +4,7 @@ from collections.abc import Iterable
 import nonebot
 from nonebot import on_message
 from nonebot.rule import command
+from arclet.alconna import config as alconna_config
 from nonebot.typing import T_State, T_Handler, T_RuleChecker
 from nonebot.dependencies import Dependent
 from nonebot.internal.rule import Rule
@@ -14,6 +15,8 @@ from nonebot.adapters.onebot.v11 import Bot, Event, MessageEvent, PrivateMessage
 from shadow.rule import OnlyMe
 from shadow.exception import catch
 from shadow.utils.patch import impl
+
+alconna_config.default_namespace.builtin_option_name["help"] = {"--help"}
 
 
 async def set_message_id(event: Event, state: T_State):
