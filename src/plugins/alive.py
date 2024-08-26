@@ -74,12 +74,14 @@ async def __():
 
         info = await bot.get_version_info()
 
+        # 只有NapCat才检测是否离线
         if info.get("app_name") != "NapCat.Onebot":
             continue
 
         try:
             data: list = await bot.call_api("get_robot_uin_range")
-            if len(data) == 0:
+            # 离线状态下返回空列表/超时
+            if len(data) != 0:
                 continue
         except Exception as e:
             logger.error(f"在线测试失败: [{type(e)}]{e}")
