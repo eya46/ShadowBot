@@ -419,6 +419,17 @@ files = [
 chardet = ">=3.0.2"
 
 [[package]]
+name = "cachetools"
+version = "5.5.0"
+description = "Extensible memoizing collections and decorators"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "cachetools-5.5.0-py3-none-any.whl", hash = "sha256:02134e8439cdc2ffb62023ce1debca2944c3f289d66bb17ead3ab3dede74b292"},
+    {file = "cachetools-5.5.0.tar.gz", hash = "sha256:2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a"},
+]
+
+[[package]]
 name = "cashews"
 version = "7.2.0"
 description = "cache tools with async power"
@@ -605,6 +616,39 @@ requests = ">=2.23.0"
 rich = "*"
 
 [[package]]
+name = "cookit"
+version = "0.8.0"
+description = "A toolkit for self use."
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "cookit-0.8.0-py3-none-any.whl", hash = "sha256:55c507ce9e21c89b1c90bd15443bc3071efef590ac2b076bf91017a9d5806baa"},
+    {file = "cookit-0.8.0.tar.gz", hash = "sha256:4eb2486895914845d94009d26ebea8a234455821bd5e57f75eba6f0572c1e32b"},
+]
+
+[package.dependencies]
+anyio = ">=4.4.0"
+fleep = ">=1.0.1"
+jinja2 = {version = ">=3.1.4", optional = true, markers = "extra == \"jinja\""}
+loguru = {version = ">=0.7.2", optional = true, markers = "extra == \"loguru\""}
+playwright = {version = ">=1.45.1", optional = true, markers = "extra == \"playwright\""}
+pydantic = {version = ">=1.10.0,<2.5.0 || >2.5.0,<2.5.1 || >2.5.1,<3.0.0", optional = true, markers = "extra == \"pydantic\""}
+typing-extensions = ">=4.12.2"
+
+[package.extras]
+all = ["cookit[jinja,loguru,nonebot,playwright,pydantic]"]
+jinja = ["jinja2 (>=3.1.4)"]
+loguru = ["loguru (>=0.7.2)"]
+nonebot = ["cookit[nonebot-alconna]"]
+nonebot-alconna = ["cookit[nonebot-base]", "nonebot-plugin-alconna (>=0.50.2)"]
+nonebot-base = ["nonebot2 (>=2.3.1)"]
+playwright = ["playwright (>=1.45.1)"]
+pw = ["cookit[playwright]"]
+pyd = ["cookit[pydantic]"]
+pydantic = ["pydantic (>=1.10.0,!=2.5.0,!=2.5.1,<3.0.0)"]
+yarl = ["playwright (>=1.45.1)"]
+
+[[package]]
 name = "dashscope"
 version = "1.20.4"
 description = "dashscope client sdk library"
@@ -710,6 +754,16 @@ files = [
 docs = ["furo (>=2023.9.10)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.25.2)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", "pytest (>=7.4.3)", "pytest-asyncio (>=0.21)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest-timeout (>=2.2)", "virtualenv (>=20.26.2)"]
 typing = ["typing-extensions (>=4.8)"]
+
+[[package]]
+name = "fleep"
+version = "1.0.1"
+description = "File format determination library"
+optional = false
+python-versions = ">=3.1"
+files = [
+    {file = "fleep-1.0.1.tar.gz", hash = "sha256:c8f62b258ee5364d7f6c1ed1f3f278e99020fc3f0a60a24ad1e10846e31d104c"},
+]
 
 [[package]]
 name = "frozenlist"
@@ -1608,14 +1662,30 @@ pydantic = ">=1.10.0,<2.5.0 || >2.5.0,<2.5.1 || >2.5.1,<3.0.0"
 typing-extensions = ">=4.0.0,<5.0.0"
 
 [[package]]
+name = "nonebot-adapter-telegram"
+version = "0.1.0b17"
+description = "Telegram Adapter for NoneBot2"
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "nonebot-adapter-telegram-0.1.0b17.tar.gz", hash = "sha256:0914b07e24d6a747a53426b4f8ae799c753a70b703242943f0421f8dee3e5f03"},
+    {file = "nonebot_adapter_telegram-0.1.0b17-py3-none-any.whl", hash = "sha256:4ff41a9a8ce828e229ffa7e192a82ea228ac60ae20abeeacbfd8244c6b71ecf8"},
+]
+
+[package.dependencies]
+anyio = ">=4.2.0,<5.0.0"
+nonebot2 = ">=2.1.3,<3.0.0"
+pydantic = ">=2.0.3,<2.5.0 || >2.5.0,<2.5.1 || >2.5.1,<3.0.0"
+
+[[package]]
 name = "nonebot-plugin-alconna"
-version = "0.51.4"
+version = "0.52.2"
 description = "Alconna Adapter for Nonebot"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "nonebot_plugin_alconna-0.51.4-py3-none-any.whl", hash = "sha256:9d31e537eb35e45a3753ad5d95dc0359f777269d6ce7e39fa74d515cad9a0981"},
-    {file = "nonebot_plugin_alconna-0.51.4.tar.gz", hash = "sha256:a43720a497c4fefb0da89e8d9996f8261bb0e92f70a991f2f4fd14c8ed628995"},
+    {file = "nonebot_plugin_alconna-0.52.2-py3-none-any.whl", hash = "sha256:eb4a4dd288b3657e5eb1935b149783a32ed01eb71efb0db3590c30cccc94a20c"},
+    {file = "nonebot_plugin_alconna-0.52.2.tar.gz", hash = "sha256:937d9ea5a1c8288dd4fb2160a114329d0b0223613684410534ac493cdd7ca9c1"},
 ]
 
 [package.dependencies]
@@ -1645,13 +1715,13 @@ pydantic = ">=1.10.0,<2.5.0 || >2.5.0,<2.5.1 || >2.5.1,<3.0.0"
 
 [[package]]
 name = "nonebot-plugin-argot"
-version = "0.1.3"
+version = "0.1.5"
 description = "NoneBot 暗语"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "nonebot_plugin_argot-0.1.3-py3-none-any.whl", hash = "sha256:0362465b6aeec13cf5a2fe408ed31a43ae048e9b20142c8c56596b85832ffdb3"},
-    {file = "nonebot_plugin_argot-0.1.3.tar.gz", hash = "sha256:cdfe5af9cc1eaff5b01246bb700081b190fe117199bb6bfd64f3d6f041b3301b"},
+    {file = "nonebot_plugin_argot-0.1.5-py3-none-any.whl", hash = "sha256:c23fbe965134086e58dd210548ada179bc859f5adead487ad05746f37b039620"},
+    {file = "nonebot_plugin_argot-0.1.5.tar.gz", hash = "sha256:588ba87aa55ef8116d2f6f468702b33eee5096d036aab053aa96126aab9f83dc"},
 ]
 
 [package.dependencies]
@@ -1661,7 +1731,7 @@ nonebot-plugin-orm = ">=0.7.6"
 nonebot2 = ">=2.3.2"
 
 [package.extras]
-adapters = ["nonebot-adapter-onebot (>=2.4.4)"]
+adapters = ["nonebot-adapter-discord (>=0.1.8)", "nonebot-adapter-dodo (>=0.2.1)", "nonebot-adapter-feishu (>=2.6.2)", "nonebot-adapter-kaiheila (>=0.3.4)", "nonebot-adapter-onebot (>=2.4.4)", "nonebot-adapter-qq (>=1.5.0)", "nonebot-adapter-red (>=0.9.0)", "nonebot-adapter-satori (>=0.12.3)", "nonebot-adapter-telegram (>=0.1.0b17)"]
 tests = ["nonebug (>=0.3.7)", "pytest-asyncio (>=0.23.8)", "pytest-mock (>=3.14.0)"]
 
 [[package]]
@@ -1777,6 +1847,31 @@ psycopg = ["sqlalchemy[postgresql-psycopgbinary]"]
 sqlite = ["sqlalchemy[aiosqlite]"]
 
 [[package]]
+name = "nonebot-plugin-picstatus"
+version = "2.1.2"
+description = "A NoneBot2 plugin generates a picture which shows the status of current device"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "nonebot_plugin_picstatus-2.1.2-py3-none-any.whl", hash = "sha256:3b4ffba4ffbd52d5acb3f4730de1ec231c695b1b6a4dec015448692e18d8d98d"},
+    {file = "nonebot_plugin_picstatus-2.1.2.tar.gz", hash = "sha256:7608991732af708a984ee61104a0aa6108123ccc3ce3e66742eb1c562942a9f5"},
+]
+
+[package.dependencies]
+anyio = ">=4.4.0"
+cookit = {version = ">=0.8.0", extras = ["jinja", "loguru", "playwright", "pydantic"]}
+httpx = ">=0.27.0"
+jinja2 = ">=3.1.4"
+nonebot-plugin-alconna = ">=0.52.0"
+nonebot-plugin-apscheduler = ">=0.5.0"
+nonebot-plugin-htmlrender = ">=0.3.5"
+nonebot-plugin-userinfo = ">=0.2.5"
+nonebot2 = ">=2.3.3"
+psutil = ">=6.0.0"
+py-cpuinfo = ">=9.0.0"
+yarl = ">=1.9.4"
+
+[[package]]
 name = "nonebot-plugin-sentry"
 version = "2.0.0"
 description = "Push your bot errors to Sentry.io"
@@ -1842,6 +1937,24 @@ nonebot-plugin-session = ">=0.3.0"
 nonebot2 = ">=2.2.0"
 
 [[package]]
+name = "nonebot-plugin-userinfo"
+version = "0.2.6"
+description = "Nonebot2 用户信息获取插件"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "nonebot_plugin_userinfo-0.2.6-py3-none-any.whl", hash = "sha256:79d2481af08a5ec77cf171c685eecd14eaf1ce4d5a1ec1fd22fbb0b85e06c260"},
+    {file = "nonebot_plugin_userinfo-0.2.6.tar.gz", hash = "sha256:0d1ce897e94a9d4c0b5300bc8f239a4676f9bb62c78a14e0f0527e5398ffc840"},
+]
+
+[package.dependencies]
+cachetools = ">=5.0.0,<6.0.0"
+emoji = ">=2.0.0,<3.0.0"
+httpx = ">=0.20.0,<1.0.0"
+nonebot2 = ">=2.3.0,<3.0.0"
+strenum = ">=0.4.15,<0.5.0"
+
+[[package]]
 name = "nonebot-plugin-waiter"
 version = "0.7.1"
 description = "An alternative for got-and-reject in Nonebot"
@@ -1857,20 +1970,20 @@ nonebot2 = ">=2.3.0"
 
 [[package]]
 name = "nonebot-plugin-wakatime"
-version = "0.2.3"
+version = "0.2.4"
 description = "将代码统计嵌入 Bot 中"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "nonebot_plugin_wakatime-0.2.3-py3-none-any.whl", hash = "sha256:79b2e28da7753d442f456b64fb1783799ec89d60cec0415c610a24173db09604"},
-    {file = "nonebot_plugin_wakatime-0.2.3.tar.gz", hash = "sha256:a018fed13b7a594ad32a32de5adf82b4679ec6d210ef8aa0d400a09cd7fcd317"},
+    {file = "nonebot_plugin_wakatime-0.2.4-py3-none-any.whl", hash = "sha256:56fb68f9be5bc6041541cbf7ea3094cf86f29c941c834229b1b94109e515b370"},
+    {file = "nonebot_plugin_wakatime-0.2.4.tar.gz", hash = "sha256:168ab6f1469c3bfa6eeb0569d99fbef043d38d8f1474255af018ae4f8b1157d6"},
 ]
 
 [package.dependencies]
 expiringdictx = ">=1.0.1"
 httpx = ">=0.27.0"
 nonebot-plugin-alconna = ">=0.49.0"
-nonebot-plugin-argot = ">=0.1.3"
+nonebot-plugin-argot = ">=0.1.5"
 nonebot-plugin-htmlrender = ">=0.3.3"
 nonebot-plugin-localstore = ">=0.7.1"
 nonebot-plugin-orm = ">=0.7.4"
@@ -2078,6 +2191,35 @@ files = [
 ]
 
 [[package]]
+name = "psutil"
+version = "6.0.0"
+description = "Cross-platform lib for process and system monitoring in Python."
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,>=2.7"
+files = [
+    {file = "psutil-6.0.0-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:a021da3e881cd935e64a3d0a20983bda0bb4cf80e4f74fa9bfcb1bc5785360c6"},
+    {file = "psutil-6.0.0-cp27-cp27m-manylinux2010_i686.whl", hash = "sha256:1287c2b95f1c0a364d23bc6f2ea2365a8d4d9b726a3be7294296ff7ba97c17f0"},
+    {file = "psutil-6.0.0-cp27-cp27m-manylinux2010_x86_64.whl", hash = "sha256:a9a3dbfb4de4f18174528d87cc352d1f788b7496991cca33c6996f40c9e3c92c"},
+    {file = "psutil-6.0.0-cp27-cp27mu-manylinux2010_i686.whl", hash = "sha256:6ec7588fb3ddaec7344a825afe298db83fe01bfaaab39155fa84cf1c0d6b13c3"},
+    {file = "psutil-6.0.0-cp27-cp27mu-manylinux2010_x86_64.whl", hash = "sha256:1e7c870afcb7d91fdea2b37c24aeb08f98b6d67257a5cb0a8bc3ac68d0f1a68c"},
+    {file = "psutil-6.0.0-cp27-none-win32.whl", hash = "sha256:02b69001f44cc73c1c5279d02b30a817e339ceb258ad75997325e0e6169d8b35"},
+    {file = "psutil-6.0.0-cp27-none-win_amd64.whl", hash = "sha256:21f1fb635deccd510f69f485b87433460a603919b45e2a324ad65b0cc74f8fb1"},
+    {file = "psutil-6.0.0-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:c588a7e9b1173b6e866756dde596fd4cad94f9399daf99ad8c3258b3cb2b47a0"},
+    {file = "psutil-6.0.0-cp36-abi3-manylinux_2_12_i686.manylinux2010_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:6ed2440ada7ef7d0d608f20ad89a04ec47d2d3ab7190896cd62ca5fc4fe08bf0"},
+    {file = "psutil-6.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5fd9a97c8e94059b0ef54a7d4baf13b405011176c3b6ff257c247cae0d560ecd"},
+    {file = "psutil-6.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e2e8d0054fc88153ca0544f5c4d554d42e33df2e009c4ff42284ac9ebdef4132"},
+    {file = "psutil-6.0.0-cp36-cp36m-win32.whl", hash = "sha256:fc8c9510cde0146432bbdb433322861ee8c3efbf8589865c8bf8d21cb30c4d14"},
+    {file = "psutil-6.0.0-cp36-cp36m-win_amd64.whl", hash = "sha256:34859b8d8f423b86e4385ff3665d3f4d94be3cdf48221fbe476e883514fdb71c"},
+    {file = "psutil-6.0.0-cp37-abi3-win32.whl", hash = "sha256:a495580d6bae27291324fe60cea0b5a7c23fa36a7cd35035a16d93bdcf076b9d"},
+    {file = "psutil-6.0.0-cp37-abi3-win_amd64.whl", hash = "sha256:33ea5e1c975250a720b3a6609c490db40dae5d83a4eb315170c4fe0d8b1f34b3"},
+    {file = "psutil-6.0.0-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:ffe7fc9b6b36beadc8c322f84e1caff51e8703b88eee1da46d1e3a6ae11b4fd0"},
+    {file = "psutil-6.0.0.tar.gz", hash = "sha256:8faae4f310b6d969fa26ca0545338b21f73c6b15db7c4a8d934a5482faa818f2"},
+]
+
+[package.extras]
+test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
+
+[[package]]
 name = "psycopg"
 version = "3.2.1"
 description = "PostgreSQL database adapter for Python"
@@ -2161,6 +2303,17 @@ files = [
     {file = "psycopg_binary-3.2.1-cp39-cp39-musllinux_1_2_ppc64le.whl", hash = "sha256:788ffc43d7517c13e624c83e0e553b7b8823c9655e18296566d36a829bfb373f"},
     {file = "psycopg_binary-3.2.1-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:21927f41c4d722ae8eb30d62a6ce732c398eac230509af5ba1749a337f8a63e2"},
     {file = "psycopg_binary-3.2.1-cp39-cp39-win_amd64.whl", hash = "sha256:921f0c7f39590763d64a619de84d1b142587acc70fd11cbb5ba8fa39786f3073"},
+]
+
+[[package]]
+name = "py-cpuinfo"
+version = "9.0.0"
+description = "Get CPU info with pure Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "py-cpuinfo-9.0.0.tar.gz", hash = "sha256:3cdbbf3fac90dc6f118bfd64384f309edeadd902d7c8fb17f02ffa1fc3f49690"},
+    {file = "py_cpuinfo-9.0.0-py3-none-any.whl", hash = "sha256:859625bc251f64e21f077d099d4162689c762b5d6a4c3c97553d56241c9674d5"},
 ]
 
 [[package]]
@@ -3433,4 +3586,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a24a866a14ed0db1939131f0a7d43c9ec204f253c6afd58bcac0c161413748ac"
+content-hash = "f185292df2a65ab5369b95371b3ecafc0c3ad94db92bcaa76d94d686518b6e8f"

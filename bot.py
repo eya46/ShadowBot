@@ -4,6 +4,7 @@ from os import getenv
 
 import nonebot
 from nonebot.log import logger, default_format
+from nonebot.adapters.telegram import Adapter as TelegramAdapter
 from nonebot.adapters.onebot.v11 import Adapter as V11Adapter
 
 logger.add("log/error.log", rotation="00:00", diagnose=False, level="ERROR", format=default_format)
@@ -12,6 +13,7 @@ nonebot.init()
 
 driver = nonebot.get_driver()
 driver.register_adapter(V11Adapter)
+driver.register_adapter(TelegramAdapter)
 
 nonebot.load_plugins("src/pre")
 logger.success("加载完成: src/pre")
@@ -23,6 +25,7 @@ nonebot.load_plugin("nonebot_plugin_htmlrender")
 nonebot.load_plugin("nonebot_plugin_orm")
 nonebot.load_plugin("nonebot_plugin_alconna")
 nonebot.load_plugin("nonebot_plugin_wakatime")
+nonebot.load_plugin("nonebot_plugin_picstatus")
 logger.success("加载完成: pip/packages")
 
 if getenv("ENVIRONMENT") != "dev":
