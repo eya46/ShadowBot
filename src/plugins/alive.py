@@ -1,4 +1,5 @@
-from nonebot import logger, get_bots, get_driver
+from nonebot import logger, get_bots, get_driver, on_command
+from nonebot_plugin_alconna import UniMessage
 from nonebot_plugin_apscheduler import scheduler
 from nonebot.adapters.onebot.v11 import Bot
 
@@ -10,6 +11,24 @@ superusers = get_driver().config.superusers
 times = 0
 
 driver = get_driver()
+
+
+@on_command("napcat").handle()
+async def _napcat_handle():
+    api = await get_value("mcsm_api")
+    token = await get_value("mcsm_token")
+    daemon_id = await get_value("napcat_daemonId")
+    instance_id = await get_value("napcat_instanceId")
+
+    if any(i is None for i in [api, token, daemon_id, instance_id]):
+        logger.error("napcat重启失败，缺少配置")
+        return
+
+    app = PanelApp(api, token)
+
+    res = await app.api_protected_instance_restart(instance_id, daemon_id)
+
+    await UniMessage(f"napcat启动结果: [{res['status']}] {res['data']}").send()
 
 
 @driver.on_bot_connect
