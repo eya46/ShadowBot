@@ -9,8 +9,9 @@ from nonebot.typing import T_State, T_Handler, T_RuleChecker
 from nonebot.dependencies import Dependent
 from nonebot.internal.rule import Rule
 from nonebot.internal.params import Depends
+from nonebot.internal.adapter import Event
 from nonebot.internal.matcher import Matcher, current_event
-from nonebot.adapters.onebot.v11 import Bot, Event, MessageEvent, PrivateMessageEvent
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent, PrivateMessageEvent
 
 from shadow.rule import OnlyMe
 from shadow.exception import catch

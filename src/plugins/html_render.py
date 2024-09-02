@@ -5,7 +5,8 @@ from arclet.alconna import Args, Option, Alconna, Arparma
 from playwright.async_api import Page
 from nonebot_plugin_alconna import Image, Match, Query, UniMsg, UniMessage, on_alconna
 from nonebot_plugin_htmlrender import get_new_page
-from nonebot.adapters.onebot.v11 import MessageEvent
+from nonebot.adapters.onebot.v11 import MessageEvent as V11MessageEvent
+from nonebot.adapters.telegram.event import MessageEvent as TelegramMessageEvent
 
 reg = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
 
@@ -47,14 +48,11 @@ async def capture_element(
 ).handle()
 async def _(
         res: Arparma,
-        url: Match[str], msg: UniMsg, event: MessageEvent, index: Query[int] = Query("~index", 0),
+        url: Match[str], msg: UniMsg, event: V11MessageEvent | TelegramMessageEvent,
+        index: Query[int] = Query("~index", 0),
         time: Query[float] = Query("~time", 3), width: Query[int] = Query("~width", 1280),
         height: Query[int] = Query("~height", 720), factor: Query[float] = Query("~factor", 2),
-
 ):
-    if not url.available and event.reply is None:
-        return
-
     _url = None
 
     if url.available:
@@ -62,7 +60,14 @@ async def _(
     else:
         # _reply: Reply = msg[Reply, 0]
         # _url = _reply.msg.extract_plain_text()
-        _url = event.reply.message.extract_plain_text()
+        if isinstance(event, V11MessageEvent):
+            _url = event.reply.message.extract_plain_text()
+        elif isinstance(event, TelegramMessageEvent):
+            if event.reply_to_message is not None:
+                _url = event.reply_to_message.message.extract_plain_text()
+
+    if _url is None:
+        return
 
     urls = findall(reg, _url)
 
