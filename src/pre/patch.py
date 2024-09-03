@@ -5,19 +5,34 @@ import nonebot
 from nonebot import on_message
 from nonebot.rule import command
 from arclet.alconna import config as alconna_config
-from nonebot.typing import T_State, T_Handler, T_RuleChecker
+from nonebot.typing import T_State, T_Handler, T_RuleChecker, T_PermissionChecker
+from nonebot.permission import SUPERUSER
 from nonebot.dependencies import Dependent
 from nonebot.internal.rule import Rule
+import nonebot_plugin_alconna
 from nonebot.internal.params import Depends
 from nonebot.internal.adapter import Event
 from nonebot.internal.matcher import Matcher, current_event
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, PrivateMessageEvent
+from nonebot.internal.permission import Permission
 
 from shadow.rule import OnlyMe
 from shadow.exception import catch
-from shadow.utils.patch import impl
+from shadow.utils.patch import patch
 
 alconna_config.default_namespace.builtin_option_name["help"] = {"--help"}
+
+_raw_on_alconna = nonebot_plugin_alconna.on_alconna
+
+
+@patch(nonebot_plugin_alconna, name="on_alconna")
+def patch_on_alconna(*args, **kwargs):
+    if (permission := kwargs.get("permission")) is None:
+        kwargs["permission"] = SUPERUSER
+    else:
+        permission: Permission | T_PermissionChecker
+        kwargs["permission"] = permission | SUPERUSER
+    return _raw_on_alconna(*args, **kwargs)
 
 
 async def set_message_id(event: Event, state: T_State):
@@ -25,7 +40,7 @@ async def set_message_id(event: Event, state: T_State):
         state["_message_id"] = event.message_id
 
 
-@impl(Matcher, classmethod)
+@patch(Matcher, classmethod)
 def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None) -> Dependent[Any]:
     handler = catch(handler)
     handler_ = Dependent[Any].parse(
@@ -37,8 +52,8 @@ def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Ite
     return handler_
 
 
-@impl(nonebot)
-def on_command(
+@patch(nonebot, name="on_command")
+def patch_on_command(
     cmd: Union[str, tuple[str, ...]],
     rule: Optional[Union[Rule, T_RuleChecker]] = None,
     aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,

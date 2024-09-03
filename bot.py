@@ -15,6 +15,9 @@ driver = nonebot.get_driver()
 driver.register_adapter(V11Adapter)
 driver.register_adapter(TelegramAdapter)
 
+nonebot.load_plugin("nonebot_plugin_alconna")
+logger.success("加载完成: nonebot_plugin_alconna")
+
 nonebot.load_plugins("src/pre")
 logger.success("加载完成: src/pre")
 
@@ -23,7 +26,6 @@ nonebot.load_plugin("nonebot_plugin_apscheduler")
 nonebot.load_plugin("nonebot_plugin_datastore")
 nonebot.load_plugin("nonebot_plugin_htmlrender")
 nonebot.load_plugin("nonebot_plugin_orm")
-nonebot.load_plugin("nonebot_plugin_alconna")
 nonebot.load_plugin("nonebot_plugin_wakatime")
 nonebot.load_plugin("nonebot_plugin_picstatus")
 nonebot.load_plugin("nonebot_plugin_nezha")
