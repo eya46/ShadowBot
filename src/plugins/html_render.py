@@ -61,7 +61,8 @@ async def _(
         # _reply: Reply = msg[Reply, 0]
         # _url = _reply.msg.extract_plain_text()
         if isinstance(event, V11MessageEvent):
-            _url = event.reply.message.extract_plain_text()
+            if event.reply is not None:
+                _url = event.reply.message.extract_plain_text()
         elif isinstance(event, TelegramMessageEvent):
             if event.reply_to_message is not None:
                 _url = event.reply_to_message.message.extract_plain_text()
