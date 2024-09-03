@@ -41,4 +41,3 @@ async def _catch1(error: ActionError | ActionFailed):
         await DoFail()
     else:
         await DoFail()
-

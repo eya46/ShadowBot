@@ -27,9 +27,7 @@ async def DoSuccess(message_id: str | None = None):
         bot: TelegramBot
         assert isinstance(event, TelegramMessageEvent)
         return await bot.set_message_reaction(
-            chat_id=event.chat.id,
-            message_id=event.message_id,
-            reaction=[ReactionTypeEmoji(emoji="👌")]
+            chat_id=event.chat.id, message_id=event.message_id, reaction=[ReactionTypeEmoji(emoji="👌")]
         )
 
     raise Exception("DoSuccess failed")
@@ -54,9 +52,7 @@ async def DoFail(message_id: str | None = None):
         bot: TelegramBot
         assert isinstance(event, TelegramMessageEvent)
         return await bot.set_message_reaction(
-            chat_id=event.chat.id,
-            message_id=event.message_id,
-            reaction=[ReactionTypeEmoji(emoji="🤪")]
+            chat_id=event.chat.id, message_id=event.message_id, reaction=[ReactionTypeEmoji(emoji="🤪")]
         )
 
     raise Exception("DoFail failed")

@@ -3,7 +3,7 @@ from asyncio import sleep
 
 from arclet.alconna import Args, Option, Alconna, Arparma
 from playwright.async_api import Page
-from nonebot_plugin_alconna import Image, Match, Query, UniMsg, UniMessage, on_alconna
+from nonebot_plugin_alconna import Image, Match, Query, UniMessage, on_alconna
 from nonebot_plugin_htmlrender import get_new_page
 from nonebot.adapters.onebot.v11 import MessageEvent as V11MessageEvent
 from nonebot.adapters.telegram.event import MessageEvent as TelegramMessageEvent
@@ -12,11 +12,11 @@ reg = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA
 
 
 async def capture_element(
-        url: str,
-        element: str | None = None,
-        time: float = 1,
-        wait_load: bool = False,
-        **kwargs,
+    url: str,
+    element: str | None = None,
+    time: float = 1,
+    wait_load: bool = False,
+    **kwargs,
 ) -> bytes:
     async with get_new_page(**kwargs) as page:
         page: Page
@@ -47,11 +47,14 @@ async def capture_element(
     )
 ).handle()
 async def _(
-        res: Arparma,
-        url: Match[str], msg: UniMsg, event: V11MessageEvent | TelegramMessageEvent,
-        index: Query[int] = Query("~index", 0),
-        time: Query[float] = Query("~time", 3), width: Query[int] = Query("~width", 1280),
-        height: Query[int] = Query("~height", 720), factor: Query[float] = Query("~factor", 2),
+    res: Arparma,
+    url: Match[str],
+    event: V11MessageEvent | TelegramMessageEvent,
+    index: Query[int] = Query("~index", 0),
+    time: Query[float] = Query("~time", 3),
+    width: Query[int] = Query("~width", 1280),
+    height: Query[int] = Query("~height", 720),
+    factor: Query[float] = Query("~factor", 2),
 ):
     _url = None
 
@@ -94,6 +97,6 @@ async def _(
                 has_touch=res.find("m"),
                 wait_load=res.find("l"),
             ),
-            mimetype="image/png"
+            mimetype="image/png",
         )
     ).send()

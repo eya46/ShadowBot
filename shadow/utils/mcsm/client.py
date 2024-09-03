@@ -42,7 +42,7 @@ class PanelApp:
             return resp.json()
 
     async def api_service_remote_service_instances(
-            self, daemon_id: str, page: int, page_size: int, status: str, instance_name: str | None = None
+        self, daemon_id: str, page: int, page_size: int, status: str, instance_name: str | None = None
     ) -> dict:
         async with AsyncClient() as client:
             resp = await client.get(
@@ -122,7 +122,7 @@ class PanelApp:
             return resp.json()
 
     async def api_instance_multi_action(
-            self, action: Literal["start", "stop", "restart", "kill"], data: list[dict[str, str]]
+        self, action: Literal["start", "stop", "restart", "kill"], data: list[dict[str, str]]
     ) -> dict:
         """
         批量操作
@@ -168,7 +168,7 @@ class PanelApp:
             return resp.json()
 
     async def api_protected_instance_install_instance(
-            self, uuid: str, daemon_id: str, target_url: str, title: str, description: str
+        self, uuid: str, daemon_id: str, target_url: str, title: str, description: str
     ) -> dict:
         async with AsyncClient() as client:
             resp = await client.post(

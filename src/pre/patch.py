@@ -39,12 +39,12 @@ def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Ite
 
 @impl(nonebot)
 def on_command(
-        cmd: Union[str, tuple[str, ...]],
-        rule: Optional[Union[Rule, T_RuleChecker]] = None,
-        aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,
-        force_whitespace: Optional[Union[str, bool]] = None,
-        _depth: int = 0,
-        **kwargs,
+    cmd: Union[str, tuple[str, ...]],
+    rule: Optional[Union[Rule, T_RuleChecker]] = None,
+    aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,
+    force_whitespace: Optional[Union[str, bool]] = None,
+    _depth: int = 0,
+    **kwargs,
 ) -> type[Matcher]:
     """注册一个消息事件响应器，并且当消息以指定命令开头时响应。
 
