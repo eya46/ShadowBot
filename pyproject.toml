@@ -42,7 +42,7 @@ pillow = "9.5"
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.3.3"
+ruff = "^0.6.3"
 
 [tool.nonebot]
 plugins = ["nonebot_plugin_chatrecorder"]
