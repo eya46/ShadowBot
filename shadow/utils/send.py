@@ -3,6 +3,7 @@ from nonebot.matcher import current_event, current_matcher
 from nonebot.internal.matcher import current_bot
 from nonebot.adapters.telegram import Bot as TelegramBot
 from nonebot.adapters.onebot.v11 import Bot as V11Bot
+from nonebot.adapters.onebot.v11 import MessageEvent as V11MessageEvent
 from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.adapters.telegram.event import MessageEvent as TelegramMessageEvent
 from nonebot.adapters.telegram.model import ReactionTypeEmoji
@@ -21,7 +22,9 @@ async def DoSuccess(message_id: str | None = None):
             message_id = matcher.state.get("_message_id")
         if use_poke:
             return await matcher.send(MessageSegment("poke", {"qq": int(event.get_user_id())}))
-        elif use_emoji and message_id:
+        elif use_emoji:
+            if message_id is None and isinstance(event, V11MessageEvent):
+                message_id = event.message_id
             return await bot.call_api("set_msg_emoji_like", message_id=message_id, emoji_id="124")
     elif isinstance(bot, TelegramBot):
         bot: TelegramBot
