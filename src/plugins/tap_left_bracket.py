@@ -15,7 +15,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
         return
 
     message = event.message.extract_plain_text()
-    if message != "（" or not message.endswith("（"):
+    if not message.endswith("（"):
         return
 
     try:
