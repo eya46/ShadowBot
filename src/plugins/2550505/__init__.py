@@ -17,11 +17,13 @@ _255 = on_alconna(
 
 @_255.assign("登录")
 async def _login(
-        account: str = GetValue("255_account"), password: str = GetValue("255_password"),
-        token: str = GetValue("255_token")
+    url: str = GetValue("255_url"),
+    account: str = GetValue("255_account"),
+    password: str = GetValue("255_password"),
+    token: str = GetValue("255_token"),
 ):
     try:
-        client = Client(account, password, token)
+        client = Client(url, account, password, token)
         if await client.check_token():
             await UniMessage("已登录").finish()
 
@@ -38,10 +40,12 @@ async def _login(
 
 @_255.assign("签到")
 async def _sign(
-        account: str = GetValue("255_account"), password: str = GetValue("255_password"),
-        token: str = GetValue("255_token")
+    url: str = GetValue("255_url"),
+    account: str = GetValue("255_account"),
+    password: str = GetValue("255_password"),
+    token: str = GetValue("255_token"),
 ):
-    client = Client(account, password, token)
+    client = Client(url, account, password, token)
     if not await client.check_token():
         login_info = await client.login()
         if login_info.code != 0:
@@ -62,9 +66,12 @@ async def _sign(
 
 @_255.assign("补签")
 async def _resign(
-        account: str = GetValue("255_account"), password: str = GetValue("255_password"),
-        token: str = GetValue):
-    client = Client(account, password, token)
+    url: str = GetValue("255_url"),
+    account: str = GetValue("255_account"),
+    password: str = GetValue("255_password"),
+    token: str = GetValue,
+):
+    client = Client(url, account, password, token)
     if not await client.check_token():
         login_info = await client.login()
         if login_info.code != 0:
