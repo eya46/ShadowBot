@@ -1,5 +1,5 @@
 from club255 import Client
-from arclet.alconna import Alconna, Subcommand
+from arclet.alconna import Alconna, Subcommand, CommandMeta
 from nonebot.exception import FinishedException
 from nonebot_plugin_alconna import UniMessage, on_alconna
 
@@ -12,6 +12,7 @@ _255 = on_alconna(
         Subcommand("签到"),
         Subcommand("补签"),
         Subcommand("登录"),
+        meta=CommandMeta(compact=True)
     )
 )
 
