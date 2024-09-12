@@ -8,3 +8,8 @@ assert len(SUPERUSERS) > 0
 
 T = TypeVar("T")
 OT = T | None
+
+
+class Undefined:
+    def __repr__(self):
+        return "UNDEFINED"

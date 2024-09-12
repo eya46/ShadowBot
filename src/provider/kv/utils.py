@@ -5,13 +5,17 @@ from nonebot.params import Depends
 from nonebot_plugin_orm import get_session
 from nonebot.internal.matcher import Matcher
 
+from shadow.utils.const import Undefined
+
 from .model import KV
 
 
-def GetValue(key: str, fail_tip: Optional[str] = None) -> str:
+def GetValue(key: str, fail_tip: str | None | type[Undefined] = None) -> str | None:
     async def _(matcher: Matcher):
         if __ := await get_value(key):
             return __
+        if fail_tip is Undefined:
+            return None
         await matcher.finish(fail_tip or f"未设置{key}")
 
     return Depends(_)

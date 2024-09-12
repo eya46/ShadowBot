@@ -7,7 +7,7 @@ readme = "README.md"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 nonebot2 = { extras = ["fastapi", "httpx", "websockets"], version = "^2.3.3" }
 
 # 适配器
@@ -54,7 +54,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 121
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q", "I"]
