@@ -1,7 +1,7 @@
 # MIT
 # https://github.com/noneplugin/nonebot-plugin-simplemusic
 
-from typing import Any, Optional, Protocol
+from typing import Any, Protocol
 import asyncio
 from difflib import SequenceMatcher
 import traceback
@@ -16,7 +16,7 @@ from nonebot.matcher import Matcher
 from nonebot.adapters.onebot.v11 import Message, MessageSegment
 
 
-async def search_qq(keyword: str) -> Optional[MessageSegment]:
+async def search_qq(keyword: str) -> MessageSegment | None:
     url = "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg"
     params = {
         "format": "json",
@@ -42,7 +42,7 @@ async def search_qq(keyword: str) -> Optional[MessageSegment]:
         return MessageSegment.music("qq", int(songs[0]["id"]))
 
 
-async def search_163(keyword: str) -> Optional[MessageSegment]:
+async def search_163(keyword: str) -> MessageSegment | None:
     url = "https://music.163.com/api/cloudsearch/pc"
     params = {"s": keyword, "type": 1, "offset": 0}
     async with httpx.AsyncClient() as client:
@@ -57,7 +57,7 @@ async def search_163(keyword: str) -> Optional[MessageSegment]:
         return MessageSegment.music("163", songs[0]["id"])
 
 
-async def search_kuwo(keyword: str) -> Optional[MessageSegment]:
+async def search_kuwo(keyword: str) -> MessageSegment | None:
     search_url = "https://search.kuwo.cn/r.s"
     params = {
         "all": keyword,
@@ -112,7 +112,7 @@ async def search_kuwo(keyword: str) -> Optional[MessageSegment]:
                     )
 
 
-async def search_kugou(keyword: str) -> Optional[MessageSegment]:
+async def search_kugou(keyword: str) -> MessageSegment | None:
     search_url = "http://mobilecdn.kugou.com/api/v3/search/song"
     params = {
         "format": "json",
@@ -153,7 +153,7 @@ async def search_kugou(keyword: str) -> Optional[MessageSegment]:
                 )
 
 
-async def search_migu(keyword: str) -> Optional[MessageSegment]:
+async def search_migu(keyword: str) -> MessageSegment | None:
     url = "https://m.music.migu.cn/migu/remoting/scr_search_tag"
     params = {"rows": 1, "type": 2, "keyword": keyword, "pgc": 1}
     headers = {"Referer": "https://m.music.migu.cn"}
@@ -181,7 +181,7 @@ async def search_migu(keyword: str) -> Optional[MessageSegment]:
         )
 
 
-async def search_bili(keyword: str) -> Optional[MessageSegment]:
+async def search_bili(keyword: str) -> MessageSegment | None:
     search_url = "https://api.bilibili.com/audio/music-service-c/s"
     params = {"page": 1, "pagesize": 1, "search_type": "music", "keyword": keyword}
     async with httpx.AsyncClient() as client:
@@ -198,7 +198,7 @@ async def search_bili(keyword: str) -> Optional[MessageSegment]:
 
 
 class Func(Protocol):
-    async def __call__(self, keyword: str) -> Optional[MessageSegment]: ...
+    async def __call__(self, keyword: str) -> MessageSegment | None: ...
 
 
 @dataclass

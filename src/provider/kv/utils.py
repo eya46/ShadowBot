@@ -1,4 +1,3 @@
-from typing import Optional
 
 from sqlalchemy import select, update
 from nonebot.params import Depends
@@ -21,7 +20,7 @@ def GetValue(key: str, fail_tip: str | None | type[Undefined] = None) -> str | N
     return Depends(_)
 
 
-def GetKV(key, fail_tip: Optional[str] = None) -> KV:
+def GetKV(key, fail_tip: str | None = None) -> KV:
     async def _(matcher: Matcher):
         if __ := await get_kv(key):
             return __
@@ -48,12 +47,12 @@ async def add_kv(key: str, value: str) -> bool:
             await session.commit()
 
 
-async def get_kv(key: str) -> Optional[KV]:
+async def get_kv(key: str) -> KV | None:
     async with get_session() as session:
         return await session.get(KV, str(key))
 
 
-async def get_value(key: str) -> Optional[str]:
+async def get_value(key: str) -> str | None:
     async with get_session() as session:
         return kv.value if (kv := await session.get(KV, str(key))) else None
 

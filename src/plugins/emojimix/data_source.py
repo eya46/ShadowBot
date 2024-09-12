@@ -1,4 +1,3 @@
-from typing import Union, Optional
 import traceback
 
 import httpx
@@ -19,7 +18,7 @@ def create_url(date: str, emoji1: list[int], emoji2: list[int]) -> str:
     return f"{API}{date}/{u1}/{u1}_{u2}.png"
 
 
-def find_emoji(emoji_code: str) -> Optional[list[int]]:
+def find_emoji(emoji_code: str) -> list[int] | None:
     emoji_num = ord(emoji_code)
     for e in emojis:
         if emoji_num in e:
@@ -27,7 +26,7 @@ def find_emoji(emoji_code: str) -> Optional[list[int]]:
     return None
 
 
-async def mix_emoji(emoji_code1: str, emoji_code2: str) -> Union[str, bytes]:
+async def mix_emoji(emoji_code1: str, emoji_code2: str) -> str | bytes:
     emoji1 = find_emoji(emoji_code1)
     emoji2 = find_emoji(emoji_code2)
     if not emoji1:

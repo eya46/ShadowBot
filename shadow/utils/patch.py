@@ -1,5 +1,5 @@
 from types import FunctionType
-from typing import Callable
+from collections.abc import Callable
 
 
 def patch(obj, pre: Callable | None = None, name: str | None = None):

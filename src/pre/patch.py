@@ -1,4 +1,4 @@
-from typing import Any, Union, Optional
+from typing import Any
 from collections.abc import Iterable
 
 import nonebot
@@ -41,7 +41,7 @@ async def set_message_id(event: Event, state: T_State):
 
 
 @patch(Matcher, classmethod)
-def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Iterable[Any]] = None) -> Dependent[Any]:
+def append_handler(cls: Matcher, handler: T_Handler, parameterless: Iterable[Any] | None = None) -> Dependent[Any]:
     handler = catch(handler)
     handler_ = Dependent[Any].parse(
         call=handler,
@@ -54,10 +54,10 @@ def append_handler(cls: Matcher, handler: T_Handler, parameterless: Optional[Ite
 
 @patch(nonebot, name="on_command")
 def patch_on_command(
-    cmd: Union[str, tuple[str, ...]],
-    rule: Optional[Union[Rule, T_RuleChecker]] = None,
-    aliases: Optional[set[Union[str, tuple[str, ...]]]] = None,
-    force_whitespace: Optional[Union[str, bool]] = None,
+    cmd: str | tuple[str, ...],
+    rule: Rule | T_RuleChecker | None = None,
+    aliases: set[str | tuple[str, ...]] | None = None,
+    force_whitespace: str | bool | None = None,
     _depth: int = 0,
     **kwargs,
 ) -> type[Matcher]:
