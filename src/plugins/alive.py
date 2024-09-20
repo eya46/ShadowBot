@@ -6,6 +6,8 @@ from nonebot.adapters.onebot.v11 import Bot
 from src.provider.kv.utils import get_value
 from shadow.utils.mcsm.client import PanelApp
 
+is_dev = get_driver().env == "dev"
+
 superusers = get_driver().config.superusers
 
 times = 0
@@ -33,6 +35,9 @@ async def _napcat_handle():
 
 @driver.on_bot_connect
 async def auto_stop(bot: Bot):
+    if is_dev:
+        return logger.info("开发环境不自动停止")
+
     api = await get_value("mcsm_api")
     token = await get_value("mcsm_token")
     daemon_id = await get_value("napcat_daemonId")
@@ -52,6 +57,9 @@ async def auto_stop(bot: Bot):
 
 @scheduler.scheduled_job("cron", minute="*/1", name="napcat自动启动")
 async def _():
+    if is_dev:
+        return logger.info("开发环境不自动启动")
+
     global times
     logger.debug("检查bot是否在线")
     if bots := get_bots():
@@ -85,6 +93,9 @@ async def _():
 
 @scheduler.scheduled_job("cron", minute="*/1", name="napcat自动关闭")
 async def __():
+    if is_dev:
+        return logger.info("开发环境不自动关闭")
+
     bots = get_bots()
 
     for bid, bot in bots.items():
