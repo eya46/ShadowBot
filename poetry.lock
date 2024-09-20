@@ -1854,13 +1854,13 @@ python-markdown-math = ">=0.8"
 
 [[package]]
 name = "nonebot-plugin-inspect"
-version = "0.1.0"
+version = "0.1.1"
 description = "Inspect on any user, group or channel"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "nonebot_plugin_inspect-0.1.0-py3-none-any.whl", hash = "sha256:c0d3a3f64abce1d8285fca31406b431e5aa9306f51c851188a871e01002763e1"},
-    {file = "nonebot_plugin_inspect-0.1.0.tar.gz", hash = "sha256:7ff400c9c68783545daf39e3986ff4d6a52570fe427aaf57dfe786a3b68bd1c7"},
+    {file = "nonebot_plugin_inspect-0.1.1-py3-none-any.whl", hash = "sha256:9d2ca1889cb05b5bc407e9a517e38030bf3326c98512cc74a2078d636ecc58b3"},
+    {file = "nonebot_plugin_inspect-0.1.1.tar.gz", hash = "sha256:409b793234bbd08138652868029b3178a65774819552b2798b4b938338bd44b1"},
 ]
 
 [package.dependencies]
@@ -3708,4 +3708,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "8e3066b27a10a0e1ba18750955439552d4bd7fe97022bc6d297679d6e7f56421"
+content-hash = "4ec8074331ad21861a8d8ba4dd3f7f995e672b07c47821f74368e67c8f6c9467"
