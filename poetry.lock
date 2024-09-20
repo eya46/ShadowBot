@@ -1702,13 +1702,13 @@ typing-extensions = ">=4.5.0"
 
 [[package]]
 name = "nonebot-adapter-onebot"
-version = "2.4.4"
+version = "2.4.5"
 description = "OneBot(CQHTTP) adapter for nonebot2"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_adapter_onebot-2.4.4-py3-none-any.whl", hash = "sha256:4dceeec7332bb560652c764405e9dd350268303f69b7c0e92b7cfebe876e8d39"},
-    {file = "nonebot_adapter_onebot-2.4.4.tar.gz", hash = "sha256:c8a3645f74a3e43c85f092fb670508c662c36831f019a15e4d74eaac686089f0"},
+    {file = "nonebot_adapter_onebot-2.4.5-py3-none-any.whl", hash = "sha256:882780f2a8eb52137177643c78a6b36c73c38cc53b20e11a5f83aa66cd8bce3f"},
+    {file = "nonebot_adapter_onebot-2.4.5.tar.gz", hash = "sha256:5897903792226683323c960472e2cced7609d45e8e8c3730646e9db5d9c3241e"},
 ]
 
 [package.dependencies]
@@ -1853,6 +1853,20 @@ pymdown-extensions = ">=9.1"
 python-markdown-math = ">=0.8"
 
 [[package]]
+name = "nonebot-plugin-inspect"
+version = "0.1.0"
+description = "Inspect on any user, group or channel"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "nonebot_plugin_inspect-0.1.0-py3-none-any.whl", hash = "sha256:c0d3a3f64abce1d8285fca31406b431e5aa9306f51c851188a871e01002763e1"},
+    {file = "nonebot_plugin_inspect-0.1.0.tar.gz", hash = "sha256:7ff400c9c68783545daf39e3986ff4d6a52570fe427aaf57dfe786a3b68bd1c7"},
+]
+
+[package.dependencies]
+nonebot-plugin-uninfo = ">=0.1.0"
+
+[[package]]
 name = "nonebot-plugin-localstore"
 version = "0.7.1"
 description = "Local Storage Support for NoneBot2"
@@ -1992,6 +2006,21 @@ nonebot-plugin-session = ">=0.3.0,<0.4.0"
 nonebot2 = {version = ">=2.2.0,<3.0.0", extras = ["fastapi"]}
 
 [[package]]
+name = "nonebot-plugin-uninfo"
+version = "0.1.0"
+description = "Universal Information Model for Nonebot2"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "nonebot_plugin_uninfo-0.1.0-py3-none-any.whl", hash = "sha256:c24155ff3eddfbf776c78fc53cb23e9189a0d9822830281a69fa54bb9c097a33"},
+    {file = "nonebot_plugin_uninfo-0.1.0.tar.gz", hash = "sha256:e76f5c88176e8ff0434f61d6cf230339f08b53f3dc3ea20b4e6758925c52bc30"},
+]
+
+[package.dependencies]
+importlib-metadata = ">=4.13.0"
+nonebot2 = ">=2.3.0"
+
+[[package]]
 name = "nonebot-plugin-user"
 version = "0.4.3"
 description = "适用于 Nonebot2 的用户插件"
@@ -2046,13 +2075,13 @@ unimsg = ["nonebot-plugin-alconna (>=0.52.2)"]
 
 [[package]]
 name = "nonebot-plugin-wakatime"
-version = "0.2.4"
+version = "0.2.5"
 description = "将代码统计嵌入 Bot 中"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "nonebot_plugin_wakatime-0.2.4-py3-none-any.whl", hash = "sha256:56fb68f9be5bc6041541cbf7ea3094cf86f29c941c834229b1b94109e515b370"},
-    {file = "nonebot_plugin_wakatime-0.2.4.tar.gz", hash = "sha256:168ab6f1469c3bfa6eeb0569d99fbef043d38d8f1474255af018ae4f8b1157d6"},
+    {file = "nonebot_plugin_wakatime-0.2.5-py3-none-any.whl", hash = "sha256:c18ad15dfc264cbd66b82f6ebe6d06292665b6b29cc24c71c4d03615ae5be225"},
+    {file = "nonebot_plugin_wakatime-0.2.5.tar.gz", hash = "sha256:72b6cde1ed22ada60ea68d9abcf5a8341c8750eb319a3d556a4853a356f96969"},
 ]
 
 [package.dependencies]
@@ -3679,4 +3708,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "90636794647f28f0ed97c7c6258b6375852487bb3619dbe50c4e4f590ba23f81"
+content-hash = "8e3066b27a10a0e1ba18750955439552d4bd7fe97022bc6d297679d6e7f56421"
