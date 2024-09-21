@@ -1854,17 +1854,17 @@ python-markdown-math = ">=0.8"
 
 [[package]]
 name = "nonebot-plugin-inspect"
-version = "0.1.1"
+version = "0.1.2"
 description = "Inspect on any user, group or channel"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "nonebot_plugin_inspect-0.1.1-py3-none-any.whl", hash = "sha256:9d2ca1889cb05b5bc407e9a517e38030bf3326c98512cc74a2078d636ecc58b3"},
-    {file = "nonebot_plugin_inspect-0.1.1.tar.gz", hash = "sha256:409b793234bbd08138652868029b3178a65774819552b2798b4b938338bd44b1"},
+    {file = "nonebot_plugin_inspect-0.1.2-py3-none-any.whl", hash = "sha256:3c1a07eab08be24fc5024d0223f83c5f55c85af7f9d3ddaeddf7a1e66edfdb5e"},
+    {file = "nonebot_plugin_inspect-0.1.2.tar.gz", hash = "sha256:c54b1718f11777dc2c0c13815ac148ce0488e3c2ccb2b098001ac089296e9b28"},
 ]
 
 [package.dependencies]
-nonebot-plugin-uninfo = ">=0.1.0"
+nonebot-plugin-uninfo = ">=0.1.1"
 
 [[package]]
 name = "nonebot-plugin-localstore"
@@ -2007,13 +2007,13 @@ nonebot2 = {version = ">=2.2.0,<3.0.0", extras = ["fastapi"]}
 
 [[package]]
 name = "nonebot-plugin-uninfo"
-version = "0.1.0"
+version = "0.1.1"
 description = "Universal Information Model for Nonebot2"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "nonebot_plugin_uninfo-0.1.0-py3-none-any.whl", hash = "sha256:c24155ff3eddfbf776c78fc53cb23e9189a0d9822830281a69fa54bb9c097a33"},
-    {file = "nonebot_plugin_uninfo-0.1.0.tar.gz", hash = "sha256:e76f5c88176e8ff0434f61d6cf230339f08b53f3dc3ea20b4e6758925c52bc30"},
+    {file = "nonebot_plugin_uninfo-0.1.1-py3-none-any.whl", hash = "sha256:98fc4ae223ee333ccb5e29352cead1a9eb9b4fea295ed3f691da8b4ce6b920fc"},
+    {file = "nonebot_plugin_uninfo-0.1.1.tar.gz", hash = "sha256:5d8839442ff9b421b773e3dc91dc4d916327a0fecb881da6879f889778d6de6d"},
 ]
 
 [package.dependencies]
@@ -3708,4 +3708,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4ec8074331ad21861a8d8ba4dd3f7f995e672b07c47821f74368e67c8f6c9467"
+content-hash = "224b279fb970f84331b3061d9439b93cf1727c2ec00a5055e21a4243bb4f1e5b"
