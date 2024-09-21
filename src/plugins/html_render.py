@@ -12,11 +12,11 @@ reg = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA
 
 
 async def capture_element(
-        url: str,
-        element: str | None = None,
-        time: float = 1,
-        wait_load: bool = False,
-        **kwargs,
+    url: str,
+    element: str | None = None,
+    time: float = 1,
+    wait_load: bool = False,
+    **kwargs,
 ) -> bytes:
     async with get_new_page(**kwargs) as page:
         page: Page
@@ -33,7 +33,7 @@ async def capture_element(
             return await page.screenshot(type="png")
 
 
-@on_alconna(
+html_render = on_alconna(
     Alconna(
         "render",
         Args["url?", str],
@@ -45,16 +45,19 @@ async def capture_element(
         Option("-m"),
         Option("-l"),
     )
-).handle()
+)
+
+
+@html_render.handle()
 async def _(
-        res: Arparma,
-        url: Match[str],
-        event: V11MessageEvent | TelegramMessageEvent,
-        index: Query[int] = Query("~index", 0),
-        time: Query[float] = Query("~time", 3),
-        width: Query[int] = Query("~width", 1280),
-        height: Query[int] = Query("~height", 720),
-        factor: Query[float] = Query("~factor", 2),
+    res: Arparma,
+    url: Match[str],
+    event: V11MessageEvent | TelegramMessageEvent,
+    index: Query[int] = Query("~index", 0),
+    time: Query[float] = Query("~time", 3),
+    width: Query[int] = Query("~width", 1280),
+    height: Query[int] = Query("~height", 720),
+    factor: Query[float] = Query("~factor", 2),
 ):
     _url = None
 
@@ -97,7 +100,15 @@ async def _(
                 is_mobile=res.find("m"),
                 has_touch=res.find("m"),
                 wait_load=res.find("l"),
+                locale="zh-CN",
             ),
             mimetype="image/png",
         )
     ).send()
+
+
+html_render.shortcut("必应", prefix=True, command="render https://www.bing.com/search?q={%0}")
+html_render.shortcut("插件", prefix=True, command="render https://registry.nonebot.dev/search?q={%0}")
+html_render.shortcut("百度", prefix=True, command="render https://www.baidu.com/s?nojc=1&wd={%0}")
+html_render.shortcut("谷歌", prefix=True, command="render https://www.google.com/search?hl=zh-CN&q={%0}")
+html_render.shortcut("插件", prefix=True, command="render https://registry.nonebot.dev/search?q={%0}")
