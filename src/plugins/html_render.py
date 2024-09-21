@@ -12,11 +12,11 @@ reg = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA
 
 
 async def capture_element(
-    url: str,
-    element: str | None = None,
-    time: float = 1,
-    wait_load: bool = False,
-    **kwargs,
+        url: str,
+        element: str | None = None,
+        time: float = 1,
+        wait_load: bool = False,
+        **kwargs,
 ) -> bytes:
     async with get_new_page(**kwargs) as page:
         page: Page
@@ -47,14 +47,14 @@ async def capture_element(
     )
 ).handle()
 async def _(
-    res: Arparma,
-    url: Match[str],
-    event: V11MessageEvent | TelegramMessageEvent,
-    index: Query[int] = Query("~index", 0),
-    time: Query[float] = Query("~time", 3),
-    width: Query[int] = Query("~width", 1280),
-    height: Query[int] = Query("~height", 720),
-    factor: Query[float] = Query("~factor", 2),
+        res: Arparma,
+        url: Match[str],
+        event: V11MessageEvent | TelegramMessageEvent,
+        index: Query[int] = Query("~index", 0),
+        time: Query[float] = Query("~time", 3),
+        width: Query[int] = Query("~width", 1280),
+        height: Query[int] = Query("~height", 720),
+        factor: Query[float] = Query("~factor", 2),
 ):
     _url = None
 
@@ -73,17 +73,18 @@ async def _(
     if _url is None:
         return
 
-    urls = findall(reg, _url)
+    if len(_url) < 3:
+        return
 
-    if len(urls) == 0:
-        raise Exception("未找到链接")
-
-    if index.available:
-        if index.result >= len(urls):
-            raise Exception("索引超出范围")
-        _url = urls[index.result]
+    if len(urls := findall(reg, _url)) == 0:
+        _url = _url.strip()
     else:
-        _url = urls[0]
+        if index.available:
+            if index.result >= len(urls):
+                raise Exception("索引超出范围")
+            _url = urls[index.result]
+        else:
+            _url = urls[0]
 
     await UniMessage(
         Image(
