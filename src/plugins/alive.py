@@ -110,7 +110,7 @@ async def auto_stop(bot: Bot, event: HeartbeatMetaEvent | None = None):
 
     if check_mcsm_qq_status():
         mcsm_qq_online = await check_mcsm_qq_online()
-        if not mcsm_qq_online:  # 只要mcsm qq开着但不在线就停止
+        if mcsm_qq_online:  # 只要mcsm qq开着但不在线就停止
             logger.info("auto_stop: mcsm qq启动但不在线，停止bot")
             await stop_mcsm_qq()
         if not online and mcsm_qq_online:  # 如果mcsm qq在线但已连bot不在线就断连(不大可能), 保证mcsm qq可以连接到bot
