@@ -3,7 +3,6 @@ import traceback
 import httpx
 from nonebot.log import logger
 
-from .config import emoji_config
 from .emoji_data import dates, emojis
 
 API = "https://www.gstatic.com/android/keyboard/emojikitchen/"
@@ -40,7 +39,7 @@ async def mix_emoji(emoji_code1: str, emoji_code2: str) -> str | bytes:
         urls.append(create_url(date, emoji2, emoji1))
 
     try:
-        async with httpx.AsyncClient(proxies=emoji_config.http_proxy, timeout=20) as client:  # type: ignore
+        async with httpx.AsyncClient(timeout=20) as client:  # type: ignore
             for url in urls:
                 resp = await client.get(url)
                 if resp.status_code == 200:
