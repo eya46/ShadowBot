@@ -72,6 +72,17 @@ async def restart_mcsm_qq():
     return res
 
 
+async def start_mcsm_qq():
+    app, daemon_id, instance_id, _ = await get_datas()
+
+    if app is None or daemon_id is None or instance_id is None:
+        return
+
+    res = await app.api_protected_instance_open(instance_id, daemon_id)
+
+    return res
+
+
 async def stop_mcsm_qq():
     app, daemon_id, instance_id, _ = await get_datas()
 
@@ -138,7 +149,7 @@ async def auto_start():
     times = 0
 
     logger.debug("尝试启动mcsm qq")
-    res = await restart_mcsm_qq()
+    res = await start_mcsm_qq()
     if res is None:
         return logger.info("mcsm qq启动失败")
     logger.info(f"mcsm qq启动结果: [{res['status']}] {res['data']}")
@@ -151,6 +162,6 @@ async def _napcat_handle():
     if app is None or daemon_id is None or instance_id is None:
         await UniMessage("napcat重启失败，缺少配置").finish()
 
-    res = await app.api_protected_instance_restart(instance_id, daemon_id)
+    res = await start_mcsm_qq()
 
     await UniMessage(f"napcat启动结果: [{res['status']}] {res['data']}").send()
