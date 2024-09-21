@@ -77,7 +77,7 @@ async def _(
         return
 
     if len(urls := findall(reg, _url)) == 0:
-        _url = _url.strip()
+        _url = "http://" + _url.strip()
     else:
         if index.available:
             if index.result >= len(urls):
