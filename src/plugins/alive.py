@@ -96,40 +96,28 @@ async def stop_mcsm_qq():
 
 @on_metaevent().handle()
 async def _meta(bot: Bot, event: HeartbeatMetaEvent):
-    # if not event.status.online and not is_dev:
-    if not event.status.online:
-        adapter: Adapter = bot.adapter
-        ws = adapter.connections[bot.self_id]
-        await ws.close(code=4444, reason="see you again~")
+    if not event.status.online and not is_dev:  # bot掉线就主动断连
+        try:
+            adapter: Adapter = bot.adapter
+            ws = adapter.connections[bot.self_id]
+            await ws.close(code=4444, reason="see you again~")
+        except Exception as e:
+            logger.error("关闭bot连接失败")
+            logger.exception(e)
 
 
-@on_metaevent().handle()
-@driver.on_bot_connect
-async def auto_stop(bot: Bot, event: HeartbeatMetaEvent | None = None):
+@scheduler.scheduled_job("interval", minutes=2, name="mcsm_qq自动停止")
+async def auto_stop():
     if is_dev:
         return logger.info("开发环境不自动停止")
 
-    app, daemon_id, instance_id, _ = await get_datas()
-    adapter: Adapter = bot.adapter
-    ws = adapter.connections[bot.self_id]
-
-    if event is None:
-        status = await bot.get_status()
-        online = status.get("online", False)
-    else:
-        online = event.status.online
-
-    if await check_mcsm_qq_status():
-        mcsm_qq_online = await check_mcsm_qq_online()
-        if mcsm_qq_online:  # 只要mcsm qq开着但不在线就停止
-            logger.info("auto_stop: mcsm qq启动但不在线，停止bot")
-            await stop_mcsm_qq()
-        if not online and mcsm_qq_online:  # 如果mcsm qq在线但已连bot不在线就断连(不大可能), 保证mcsm qq可以连接到bot
-            logger.info("auto_stop: bot不在线且mcsm_qq在线，断连")
-            await ws.close(code=4444, reason="see you again~")
+    if await check_mcsm_qq_status() and not await check_mcsm_qq_online():
+        # 只要mcsm qq开着但不在线就停止
+        logger.info("auto_stop: mcsm qq启动但不在线，停止bot")
+        await stop_mcsm_qq()
 
 
-@scheduler.scheduled_job("cron", minute="*/1", name="napcat自动启动")
+@scheduler.scheduled_job("cron", minute="*/1", name="mcsm_qq自动启动")
 async def auto_start():
     if is_dev:
         return logger.info("开发环境不自动启动")
