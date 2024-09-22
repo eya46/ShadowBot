@@ -9,13 +9,13 @@ from nonebot.adapters.onebot.v11 import Bot, Adapter, HeartbeatMetaEvent
 from src.provider.kv.utils import get_value
 from shadow.utils.mcsm.client import PanelApp
 
-is_dev = get_driver().env == "dev"
+driver = get_driver()
 
-superusers = get_driver().config.superusers
+is_dev = driver.env == "dev"
+
+superusers = driver.config.superusers
 
 times = 0
-
-driver = get_driver()
 
 app: PanelApp | None = None
 daemon_id: str | None = None
@@ -54,11 +54,11 @@ async def check_mcsm_qq_online() -> bool:
 
 
 async def check_mcsm_qq_status() -> bool:
-    app, instance_id, daemon_id, _ = await get_datas()
+    app, daemon_id, instance_id, _ = await get_datas()
     if app is None or instance_id is None or daemon_id is None:
         return False
     res = await app.api_instance(instance_id, daemon_id)
-    return res.get("status", -1) == 3
+    return res.get("data", {}).get("status", -1) == 3
 
 
 async def restart_mcsm_qq():
@@ -106,11 +106,11 @@ async def _meta(bot: Bot, event: HeartbeatMetaEvent):
             logger.exception(e)
 
 
+@driver.on_bot_connect
 @scheduler.scheduled_job("interval", minutes=2, name="mcsm_qq自动停止")
-async def auto_stop():
+async def auto_stop(bot: Bot | None = None):
     if is_dev:
         return logger.info("开发环境不自动停止")
-
     if await check_mcsm_qq_status() and not await check_mcsm_qq_online():
         # 只要mcsm qq开着但不在线就停止
         logger.info("auto_stop: mcsm qq启动但不在线，停止bot")
