@@ -12,4 +12,4 @@ async def check_msg_type(msg: UniMsg) -> tuple[Literal["text"], any]:
     if Reply in msg:
         reply = str(msg[Reply, 0].msg)
 
-    return "text", (reply, str(msg.extract_plain_text())) if reply else (msg.extract_plain_text())
+    return "text", (reply, str(msg.extract_plain_text())) if reply else (msg.extract_plain_text(), None)
