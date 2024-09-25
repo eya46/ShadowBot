@@ -16,6 +16,7 @@ async def capture_element(
     element: str | None = None,
     time: float = 1,
     wait_load: bool = False,
+    full_page: bool = False,
     **kwargs,
 ) -> bytes:
     async with get_new_page(**kwargs) as page:
@@ -30,7 +31,7 @@ async def capture_element(
         if element:
             return await page.locator(element).screenshot(type="png")
         else:
-            return await page.screenshot(type="png")
+            return await page.screenshot(type="png", full_page=full_page)
 
 
 html_render = on_alconna(
@@ -42,6 +43,8 @@ html_render = on_alconna(
         Option("-h|--height", Args["height", int]),
         Option("-w|--width", Args["width", int]),
         Option("-f|--factor", Args["factor", float]),
+        # Option("-a|--all", default=False),
+        Option("-e|--element", Args["element", str]),
         Option("-m"),
         Option("-l"),
     )
@@ -58,6 +61,8 @@ async def _(
     width: Query[int] = Query("~width", 1280),
     height: Query[int] = Query("~height", 720),
     factor: Query[float] = Query("~factor", 2),
+    # full_page: Query[bool] = Query("~all"),
+    element: Query[str] = Query("~element"),
 ):
     _url = None
 
@@ -93,7 +98,7 @@ async def _(
         Image(
             raw=await capture_element(
                 _url,
-                "body",
+                element.result if element.available else None,
                 time=1 if res.find("l") and time.result == 3 else time.result,
                 viewport={"width": width.result, "height": height.result},
                 device_scale_factor=factor.result,
@@ -101,6 +106,7 @@ async def _(
                 has_touch=res.find("m"),
                 wait_load=res.find("l"),
                 locale="zh-CN",
+                # full_page=full_page.result,
             ),
             mimetype="image/png",
         )
