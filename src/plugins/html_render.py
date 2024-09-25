@@ -43,7 +43,7 @@ html_render = on_alconna(
         Option("-h|--height", Args["height", int]),
         Option("-w|--width", Args["width", int]),
         Option("-f|--factor", Args["factor", float]),
-        # Option("-a|--all", default=False),
+        Option("-a|--all"),
         Option("-e|--element", Args["element", str]),
         Option("-m"),
         Option("-l"),
@@ -61,7 +61,7 @@ async def _(
     width: Query[int] = Query("~width", 1280),
     height: Query[int] = Query("~height", 720),
     factor: Query[float] = Query("~factor", 2),
-    # full_page: Query[bool] = Query("~all"),
+    full_page: Query = Query("~all"),
     element: Query[str] = Query("~element"),
 ):
     _url = None
@@ -106,7 +106,7 @@ async def _(
                 has_touch=res.find("m"),
                 wait_load=res.find("l"),
                 locale="zh-CN",
-                # full_page=full_page.result,
+                full_page=full_page.available,
             ),
             mimetype="image/png",
         )
