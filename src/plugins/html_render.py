@@ -17,6 +17,7 @@ async def capture_element(
     time: float = 1,
     wait_load: bool = False,
     full_page: bool = False,
+    jpeg: bool = False,
     **kwargs,
 ) -> bytes:
     async with get_new_page(**kwargs) as page:
@@ -29,9 +30,9 @@ async def capture_element(
                 raise Exception("等待加载超时")
         await sleep(time)
         if element:
-            return await page.locator(element).screenshot(type="png")
+            return await page.locator(element).screenshot(type="jpeg" if jpeg else "png")
         else:
-            return await page.screenshot(type="png", full_page=full_page)
+            return await page.screenshot(type="jpeg" if jpeg else "png", full_page=full_page)
 
 
 html_render = on_alconna(
@@ -43,6 +44,7 @@ html_render = on_alconna(
         Option("-h|--height", Args["height", int]),
         Option("-w|--width", Args["width", int]),
         Option("-f|--factor", Args["factor", float]),
+        Option("-j|--jpeg"),
         Option("-a|--all"),
         Option("-e|--element", Args["element", str]),
         Option("-m"),
@@ -63,6 +65,7 @@ async def _(
     factor: Query[float] = Query("~factor", 2),
     full_page: Query = Query("~all"),
     element: Query[str] = Query("~element"),
+    jpeg: Query = Query("~jpeg"),
 ):
     _url = None
 
@@ -107,6 +110,7 @@ async def _(
                 wait_load=res.find("l"),
                 locale="zh-CN",
                 full_page=full_page.available,
+                jpeg=jpeg.available,
             ),
             mimetype="image/png",
         )
