@@ -8,7 +8,7 @@ from nonebot_plugin_htmlrender import get_new_page
 from nonebot.adapters.onebot.v11 import MessageEvent as V11MessageEvent
 from nonebot.adapters.telegram.event import MessageEvent as TelegramMessageEvent
 
-reg = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+reg = r"http[s]?://(?:[a-zA-Z0-9$-_@.&+!*',]|[()%#]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
 
 
 async def capture_element(
@@ -49,6 +49,7 @@ html_render = on_alconna(
         Option("-e|--element", Args["element", str]),
         Option("-m"),
         Option("-l"),
+        Option("-s|--skip"),
     )
 )
 
@@ -66,6 +67,7 @@ async def _(
     full_page: Query = Query("~all"),
     element: Query[str] = Query("~element"),
     jpeg: Query = Query("~jpeg"),
+    skip: Query = Query("~skip"),
 ):
     _url = None
 
@@ -87,15 +89,16 @@ async def _(
     if len(_url) < 3:
         return
 
-    if len(urls := findall(reg, _url)) == 0:
-        _url = "http://" + _url.strip()
-    else:
-        if index.available:
-            if index.result >= len(urls):
-                raise Exception("索引超出范围")
-            _url = urls[index.result]
+    if not skip.available:
+        if len(urls := findall(reg, _url)) == 0:
+            _url = "http://" + _url.strip()
         else:
-            _url = urls[0]
+            if index.available:
+                if index.result >= len(urls):
+                    raise Exception("索引超出范围")
+                _url = urls[index.result]
+            else:
+                _url = urls[0]
 
     await UniMessage(
         Image(
@@ -117,8 +120,8 @@ async def _(
     ).send()
 
 
-html_render.shortcut("必应", prefix=True, command="render https://www.bing.com/search?q={%0}")
-html_render.shortcut("插件", prefix=True, command="render https://registry.nonebot.dev/search?q={%0}")
-html_render.shortcut("百度", prefix=True, command="render https://www.baidu.com/s?nojc=1&wd={%0}")
-html_render.shortcut("谷歌", prefix=True, command="render https://www.google.com/search?hl=zh-CN&q={%0}")
-html_render.shortcut("插件", prefix=True, command="render https://registry.nonebot.dev/search?q={%0}")
+html_render.shortcut("必应", prefix=True, command="render https://www.bing.com/search?q={%0} --skip")
+html_render.shortcut("插件", prefix=True, command="render https://registry.nonebot.dev/search?q={%0} --skip")
+html_render.shortcut("百度", prefix=True, command="render https://www.baidu.com/s?nojc=1&wd={%0} --skip")
+html_render.shortcut("谷歌", prefix=True, command="render https://www.google.com/search?hl=zh-CN&q={%0} --skip")
+html_render.shortcut("插件", prefix=True, command="render https://registry.nonebot.dev/search?q={%0} --skip")
