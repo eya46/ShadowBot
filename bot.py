@@ -29,6 +29,7 @@ nonebot.load_plugin("nonebot_plugin_orm")
 nonebot.load_plugin("nonebot_plugin_picstatus")
 nonebot.load_plugin("nonebot_plugin_nezha")
 nonebot.load_plugin("nonebot_plugin_inspect")
+nonebot.load_plugin("nonebot_plugin_wakatime")
 logger.success("加载完成: pip/packages")
 
 if getenv("ENVIRONMENT") != "dev":

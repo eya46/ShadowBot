@@ -2,7 +2,7 @@ from typing import Any
 from collections.abc import Iterable
 
 import nonebot
-from nonebot import on_message
+from nonebot import logger, on_message
 from nonebot.rule import command
 from arclet.alconna import config as alconna_config
 from nonebot.typing import T_State, T_Handler, T_RuleChecker, T_PermissionChecker
@@ -23,6 +23,12 @@ from shadow.utils.patch import patch
 alconna_config.default_namespace.builtin_option_name["help"] = {"--help"}
 
 _raw_on_alconna = nonebot_plugin_alconna.on_alconna
+
+
+@patch(nonebot_plugin_alconna.command_manager, name="load_cache")
+@patch(nonebot_plugin_alconna.command_manager, name="dump_cache")
+def command_manager_patch(*args, **kwargs):
+    logger.info("nonebot_plugin_alconna.command_manager.load_cache/dump_cache is disabled")
 
 
 @patch(nonebot_plugin_alconna, name="on_alconna")

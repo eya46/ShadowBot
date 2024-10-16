@@ -185,3 +185,18 @@ class PanelApp:
                 },
             )
             return resp.json()
+
+
+async def main():
+    app = PanelApp("http://mcsm.api888.top", "5de967c5a2d64f13ade37edbf1d4a097")
+    print(
+        await app.api_protected_instance_asynchronous(
+            "a5331af984474065a47c500f8f15158f", "db77195412cf4121a3ac1ec47a1ceae4"
+        )
+    )
+
+
+if __name__ == "__main__":
+    import asyncio
+
+    asyncio.run(main())

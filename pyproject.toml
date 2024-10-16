@@ -12,20 +12,21 @@ nonebot2 = { extras = ["fastapi", "httpx", "websockets"], version = "^2.3.3" }
 
 # 适配器
 nonebot-adapter-onebot = ">=2.4.5"
-nonebot-adapter-telegram = "^0.1.0b17"
+nonebot-adapter-telegram = "^0.1.0b18"
 
 # 插件
 nonebot-plugin-orm = { extras = ["asyncpg", "postgresql"], version = "^0.7.6" }
 nonebot-plugin-apscheduler = ">=0.5.0"
-nonebot-plugin-alconna = ">=0.52.2"
-nonebot-plugin-chatrecorder = "^0.6.0"
+nonebot-plugin-alconna = ">=0.53.0"
+nonebot-plugin-chatrecorder = "^0.6.2"
 nonebot-plugin-localstore = "^0.7.1"
 nonebot-plugin-sentry = "^2.0.0"
 nonebot-plugin-datastore = "^1.3.0"
 nonebot-plugin-htmlrender = ">=0.3.5"
 nonebot-plugin-picstatus = "^2.1.2"
 nonebot-plugin-nezha = "^0.5.1"
-nonebot-plugin-inspect = ">=0.1.2"
+nonebot-plugin-inspect = ">=0.2.0"
+nonebot-plugin-wakatime = "^0.2.6"
 
 # 其它依赖
 emoji = "^2.10.1"
@@ -39,6 +40,7 @@ playwright = "1.46.0"
 fake-useragent = "^1.5.1"
 pillow = "9.5"
 club255 = "^0.1.2"
+lxml = "^5.3.0"
 
 
 
