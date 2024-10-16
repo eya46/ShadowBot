@@ -7,22 +7,16 @@ from shadow.utils.const import Undefined
 from src.provider.kv.utils import GetValue, add_kv
 
 _255 = on_alconna(
-    Alconna(
-        "255",
-        Subcommand("签到"),
-        Subcommand("补签"),
-        Subcommand("登录"),
-        meta=CommandMeta(compact=True)
-    )
+    Alconna("255", Subcommand("签到"), Subcommand("补签"), Subcommand("登录"), meta=CommandMeta(compact=True))
 )
 
 
 @_255.assign("登录")
 async def _login(
-        url: str = GetValue("255_url"),
-        account: str = GetValue("255_account"),
-        password: str = GetValue("255_password"),
-        token: str | None = GetValue("255_token", fail_tip=Undefined),
+    url: str = GetValue("255_url"),
+    account: str = GetValue("255_account"),
+    password: str = GetValue("255_password"),
+    token: str | None = GetValue("255_token", fail_tip=Undefined),
 ):
     client = Client(url, account, password, token)
     try:
@@ -44,10 +38,10 @@ async def _login(
 
 @_255.assign("签到")
 async def _sign(
-        url: str = GetValue("255_url"),
-        account: str = GetValue("255_account"),
-        password: str = GetValue("255_password"),
-        token: str | None = GetValue("255_token", fail_tip=Undefined),
+    url: str = GetValue("255_url"),
+    account: str = GetValue("255_account"),
+    password: str = GetValue("255_password"),
+    token: str | None = GetValue("255_token", fail_tip=Undefined),
 ):
     client = Client(url, account, password, token)
     try:
@@ -73,10 +67,10 @@ async def _sign(
 
 @_255.assign("补签")
 async def _resign(
-        url: str = GetValue("255_url"),
-        account: str = GetValue("255_account"),
-        password: str = GetValue("255_password"),
-        token: str | None = GetValue("255_token", fail_tip=Undefined),
+    url: str = GetValue("255_url"),
+    account: str = GetValue("255_account"),
+    password: str = GetValue("255_password"),
+    token: str | None = GetValue("255_token", fail_tip=Undefined),
 ):
     client = Client(url, account, password, token)
     try:
