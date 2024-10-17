@@ -4,8 +4,8 @@ from os import getenv
 
 import nonebot
 from nonebot.log import logger, default_format
-from nonebot.adapters.telegram import Adapter as TelegramAdapter
-# from nonebot.adapters.onebot.v11 import Adapter as V11Adapter
+# from nonebot.adapters.telegram import Adapter as TelegramAdapter
+from nonebot.adapters.onebot.v11 import Adapter as V11Adapter
 
 logger.add("log/error.log", rotation="00:00", diagnose=False, level="ERROR", format=default_format)
 
