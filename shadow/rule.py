@@ -3,13 +3,13 @@ from nonebot.rule import Rule
 from nonebot.permission import SuperUser
 from nonebot.internal.adapter import Event
 
-_start = tuple(get_driver().config.command_start)
+StartCommands = tuple(get_driver().config.command_start)
 
 
 def _UseStart(event: Event):
     if len(txt := event.get_plaintext()) == 0:
         return False
-    return txt.startswith(_start)
+    return txt.startswith(StartCommands)
 
 
 OnlyMe = Rule(SuperUser())

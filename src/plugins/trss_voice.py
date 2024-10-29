@@ -9,7 +9,6 @@ from nonebot.internal.adapter import Event
 from nonebot.adapters.onebot.v11 import MessageSegment
 
 from shadow.rule import OnlyMe, UseStart
-from shadow.exception import ActionError
 from src.provider.kv.utils import GetValue
 
 command_start = " ".join(get_driver().config.command_start)
@@ -91,7 +90,7 @@ async def _(event: Event, matcher: Matcher, state: T_State, voice_api: Annotated
     text: str = state["text"]
 
     if speaker is None or text is None:
-        raise ActionError("无法识别发言者")
+        return
 
     await matcher.send(
         MessageSegment.record(

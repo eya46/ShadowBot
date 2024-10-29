@@ -2106,13 +2106,13 @@ nonebot2 = {version = ">=2.3.0", extras = ["httpx"]}
 
 [[package]]
 name = "nonebot-plugin-omb"
-version = "0.1.6"
+version = "0.1.7"
 description = "ohh my bot!"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_plugin_omb-0.1.6-py3-none-any.whl", hash = "sha256:7f9108c052ec490f3c8fa1c587e45e14287cbea25915b4b38020f83cff4afc05"},
-    {file = "nonebot_plugin_omb-0.1.6.tar.gz", hash = "sha256:8666ff1a26843384c6a28ae3a0f329bd4d7b8dcfc40667d0185d694dfdd5f7b3"},
+    {file = "nonebot_plugin_omb-0.1.7-py3-none-any.whl", hash = "sha256:116d68c384506bfc41dd26a82496487510a2c3729c772ea4ea7ab2cc39bf24c5"},
+    {file = "nonebot_plugin_omb-0.1.7.tar.gz", hash = "sha256:726da140affb81a973fd472ef79ba6248bb7f6181d65fe2c691a983fdf7b18af"},
 ]
 
 [package.dependencies]
@@ -2384,6 +2384,46 @@ files = [
 
 [package.dependencies]
 prompt-toolkit = ">=3.0.19,<4.0.0"
+
+[[package]]
+name = "ormsgpack"
+version = "1.6.0"
+description = "Fast, correct Python msgpack library supporting dataclasses, datetimes, and numpy"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "ormsgpack-1.6.0-cp310-cp310-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:613e851edde1dc3b94e84e9d8046b9c603fce1e5bf40f3ebe129a81f9a31d4b9"},
+    {file = "ormsgpack-1.6.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a8e2b858cc378d2c46161bebfe6232de1e158eb2e7dfdf07172fe183bf8a9333"},
+    {file = "ormsgpack-1.6.0-cp310-cp310-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:4003867208e3b9b9471c0a4bbf68479dcde69137ca1c5860bd7236410bf65024"},
+    {file = "ormsgpack-1.6.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0fd584dd40d479a60cbae0ca59792b82144f35e355c363771566bb7d337ba8a9"},
+    {file = "ormsgpack-1.6.0-cp310-none-win_amd64.whl", hash = "sha256:e8b2cab0ddb98b1b26f01da552a76138299ecf29f8a04fe34ac5b686b9db02d0"},
+    {file = "ormsgpack-1.6.0-cp311-cp311-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:6f08a3c448e9ca65c7b5af600b3d795ffbee0dbd5b4defc6e12f89d2d56c57b4"},
+    {file = "ormsgpack-1.6.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:978330de00c1d8c20b62ae38f20b85312abefb6e46342617ba47d9a01b70d727"},
+    {file = "ormsgpack-1.6.0-cp311-cp311-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:b6b747ae7f2fa8e54cf7033a9907cc2dfeee70184148ce57d1c8dff3ed2d3692"},
+    {file = "ormsgpack-1.6.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:243b330577c8158a89fec4abce40254cf907637ea7e604bf866b3e39b3c5a819"},
+    {file = "ormsgpack-1.6.0-cp311-none-win_amd64.whl", hash = "sha256:75e1837f569fb6ae2f0c6415e983a0300b633b69a5d3480f34fb0a61f1662dbf"},
+    {file = "ormsgpack-1.6.0-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:af017e8dcf8dad7b36c018e2ec410eb2bedd123aa81beabc808b92f00a76c285"},
+    {file = "ormsgpack-1.6.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2c42c72050499d57d620ae81bf3b47637fb66b1c90a8abcabc0fbf9b193fdabc"},
+    {file = "ormsgpack-1.6.0-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:472a6e9207caad84ad3bddd6c6be54e99fdb7ef667cedc1074f26386aebd6580"},
+    {file = "ormsgpack-1.6.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:33075e026d8536c6953d0485c34970f62dcc309d662f5913147bfbebe8b1d59f"},
+    {file = "ormsgpack-1.6.0-cp312-none-win_amd64.whl", hash = "sha256:f28b4a0cd7f64b92e4a0de6acbd7d03d20970fdded9e752fa6dedb3b95be86a3"},
+    {file = "ormsgpack-1.6.0-cp313-cp313-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:113316087520ec70f7c0f36450181ca24d575d4225116545c9038d6e8e576f51"},
+    {file = "ormsgpack-1.6.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9a72971eeccfc2e720491abae3fc7f368886d81b7ef3f965eb2adb7922454243"},
+    {file = "ormsgpack-1.6.0-cp313-cp313-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:e17d9b9b0a61ef3f26a66c85d9b3140a2111e4f2c5b4daf04185eac872b39303"},
+    {file = "ormsgpack-1.6.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9219d871d05370443129679241a6c4bd579ff351a2c7675ff2bb192485f543e6"},
+    {file = "ormsgpack-1.6.0-cp313-none-win_amd64.whl", hash = "sha256:a0ee8ae2981548df90a4ff0a8cde710cd289a19980e74a338d6c958a4e6c1c84"},
+    {file = "ormsgpack-1.6.0-cp38-cp38-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:a4370a614ae1e1cce09292787b5b8863f2bde1cfc13e20401d8e143f773815ff"},
+    {file = "ormsgpack-1.6.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e1e3aeca525ad87e61a54795a12038951c1ef60c66f4c3af3296dd4519d4f824"},
+    {file = "ormsgpack-1.6.0-cp38-cp38-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:b7ec46f3f12b54bd543787ba258099630cc284d23e3feae4bb2e0d4991ed7023"},
+    {file = "ormsgpack-1.6.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d780359d04f9a55b5a18d5d04a2f67731ff6291ee1f4b728f93ad59e71d69e64"},
+    {file = "ormsgpack-1.6.0-cp38-none-win_amd64.whl", hash = "sha256:1c9972a30354ca947591254c011c33b26739f1a8f1bf30d1ff77f16005b8ccc5"},
+    {file = "ormsgpack-1.6.0-cp39-cp39-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:496abd803179cdbb8221283c0153771a7c5c6f63065c10a287b14c152c2f828d"},
+    {file = "ormsgpack-1.6.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c9d1d1bd43cc29da03fcbbd74980a2fff85740c43510dc4a15972764147ed39c"},
+    {file = "ormsgpack-1.6.0-cp39-cp39-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:2f1c82c5289725647c3079a9e0abb9064eda240dfdc3a3eb6f891daf271718dd"},
+    {file = "ormsgpack-1.6.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fde482c53de5df1da84e2291ba7e78ac16b86cb33763b919436b25d714c509be"},
+    {file = "ormsgpack-1.6.0-cp39-none-win_amd64.whl", hash = "sha256:aa1e1f26e5e31648a6cad43a4b22d55340c78940a1739616bf15458c075c068a"},
+    {file = "ormsgpack-1.6.0.tar.gz", hash = "sha256:0c9612147f3c406b56eba6a576948057ada711bda0831f192afd46be6e5dd91e"},
+]
 
 [[package]]
 name = "pillow"
@@ -4087,4 +4127,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4ec502d23d29d1655c65896cfe3be03e2f052d4210cc65630b04914bf200508e"
+content-hash = "4b09a7fcf6861cf76c3c4b698f7f28fed7b9acf9de4c7e2d674e97bcbf8ce103"

@@ -17,7 +17,7 @@ nonebot-adapter-telegram = "^0.1.0b19"
 # 基础
 nonebot-plugin-mmm = "^0.1.7"
 nonebot-plugin-pong = "^0.1.2"
-nonebot-plugin-omb = "^0.1.6"
+nonebot-plugin-omb = "^0.1.7"
 
 # 插件
 nonebot-plugin-orm = { extras = ["asyncpg", "postgresql"], version = "^0.7.6" }
@@ -46,6 +46,7 @@ fake-useragent = "^1.5.1"
 pillow = "9.5"
 club255 = "^0.1.2"
 lxml = "^5.3.0"
+ormsgpack = "^1.6.0"
 
 
 
