@@ -1,10 +1,7 @@
 from typing import TypeVar
 
-from nonebot import get_driver
-
-SUPERUSERS = get_driver().config.superusers
-
-assert len(SUPERUSERS) > 0
+from nonebot.permission import SuperUser
+from nonebot.internal.rule import Rule
 
 T = TypeVar("T")
 OT = T | None
@@ -13,3 +10,7 @@ OT = T | None
 class Undefined:
     def __repr__(self):
         return "UNDEFINED"
+
+
+SuperUserObj = SuperUser()
+SuperUserRule = Rule(SuperUserObj)

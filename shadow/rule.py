@@ -3,13 +3,6 @@ from nonebot.rule import Rule
 from nonebot.permission import SuperUser
 from nonebot.internal.adapter import Event
 
-from shadow.utils.const import SUPERUSERS
-
-
-def _OnlyMe(event: Event):
-    return event.get_user_id() in SUPERUSERS
-
-
 _start = tuple(get_driver().config.command_start)
 
 

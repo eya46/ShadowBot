@@ -5,7 +5,7 @@ from nonebot.plugin import get_plugin_config
 from nonebot_plugin_alconna import Extension
 from nonebot.internal.adapter import Event
 
-from shadow.utils.const import SUPERUSERS
+from shadow.utils.const import SuperUserObj
 
 
 class Config(BaseModel):
@@ -28,4 +28,4 @@ class MyExtension(Extension):
         if command.name in config.global_alconna_plugins_white_list:
             return True
 
-        return event.get_user_id() in SUPERUSERS
+        return await SuperUserObj(bot, event)
