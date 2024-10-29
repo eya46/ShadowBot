@@ -20,7 +20,7 @@ def catch(func):
     async def _(*args, **kwargs):
         try:
             ret = await func(*args, **kwargs)
-            if ret:
+            if ret == "success":
                 await DoSuccess()
                 raise SkippedException()
             return ret

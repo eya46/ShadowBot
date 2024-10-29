@@ -1892,13 +1892,13 @@ typing-extensions = ">=4.5.0"
 
 [[package]]
 name = "nonebot-adapter-onebot"
-version = "2.4.5"
+version = "2.4.6"
 description = "OneBot(CQHTTP) adapter for nonebot2"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_adapter_onebot-2.4.5-py3-none-any.whl", hash = "sha256:882780f2a8eb52137177643c78a6b36c73c38cc53b20e11a5f83aa66cd8bce3f"},
-    {file = "nonebot_adapter_onebot-2.4.5.tar.gz", hash = "sha256:5897903792226683323c960472e2cced7609d45e8e8c3730646e9db5d9c3241e"},
+    {file = "nonebot_adapter_onebot-2.4.6-py3-none-any.whl", hash = "sha256:b1ec7023fd83d731f63b513217327a57d12893a261944934b9195f79173791ad"},
+    {file = "nonebot_adapter_onebot-2.4.6.tar.gz", hash = "sha256:e33c93649ad11b320d8e9ff213635f29b23b4d0413c9158bd031c513c2f8f701"},
 ]
 
 [package.dependencies]
@@ -1909,13 +1909,13 @@ typing-extensions = ">=4.0.0,<5.0.0"
 
 [[package]]
 name = "nonebot-adapter-telegram"
-version = "0.1.0b18"
+version = "0.1.0b19"
 description = "Telegram Adapter for NoneBot2"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot-adapter-telegram-0.1.0b18.tar.gz", hash = "sha256:233225f4d2fed8d720e10b631a761598dc23e6f51c2d2c4b1181b5f786f9d9db"},
-    {file = "nonebot_adapter_telegram-0.1.0b18-py3-none-any.whl", hash = "sha256:1d0291c677ab8c90a83636955d51d376904fa59e8f6afbb709492443d6e70ba1"},
+    {file = "nonebot-adapter-telegram-0.1.0b19.tar.gz", hash = "sha256:b741027a1b4828d69d2191e880b6e7919a342071e9bac0dcf5db58b44884b33f"},
+    {file = "nonebot_adapter_telegram-0.1.0b19-py3-none-any.whl", hash = "sha256:59d0f63a49487c9558c99709958c9392243c2fb27b8032b830afb63b775f0a54"},
 ]
 
 [package.dependencies]
@@ -2074,6 +2074,21 @@ pydantic = ">=1.10.0,<2.5.0 || >2.5.0,<2.5.1 || >2.5.1,<3.0.0"
 typing-extensions = ">=4.0.0,<5.0.0"
 
 [[package]]
+name = "nonebot-plugin-mmm"
+version = "0.1.7"
+description = "Bot的消息也是消息!"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "nonebot_plugin_mmm-0.1.7-py3-none-any.whl", hash = "sha256:78d499957024959f2c3b26e1fea61cd9879e536afc4d1892dc24b2958322c69e"},
+    {file = "nonebot_plugin_mmm-0.1.7.tar.gz", hash = "sha256:e09823570200288248f0a8fa0c75c0555b64bb40d3fba34314ceba091f2d00c6"},
+]
+
+[package.dependencies]
+nonebot-adapter-onebot = ">=2.1.0,<3.0.0"
+nonebot2 = ">=2.3.0,<3.0.0"
+
+[[package]]
 name = "nonebot-plugin-nezha"
 version = "0.5.1"
 description = "nonebot哪吒监控插件，使用哪吒监控API。"
@@ -2088,6 +2103,24 @@ files = [
 jsonpath = ">=0.82.2,<0.83.0"
 nonebot-plugin-alconna = ">=0.52.2"
 nonebot2 = {version = ">=2.3.0", extras = ["httpx"]}
+
+[[package]]
+name = "nonebot-plugin-omb"
+version = "0.1.6"
+description = "ohh my bot!"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "nonebot_plugin_omb-0.1.6-py3-none-any.whl", hash = "sha256:7f9108c052ec490f3c8fa1c587e45e14287cbea25915b4b38020f83cff4afc05"},
+    {file = "nonebot_plugin_omb-0.1.6.tar.gz", hash = "sha256:8666ff1a26843384c6a28ae3a0f329bd4d7b8dcfc40667d0185d694dfdd5f7b3"},
+]
+
+[package.dependencies]
+nonebot-adapter-onebot = ">=2.1.0,<3.0.0"
+nonebot2 = ">=2.3.0,<3.0.0"
+
+[package.extras]
+alconna = ["nonebot-plugin-alconna (>=0.53.0)"]
 
 [[package]]
 name = "nonebot-plugin-orm"
@@ -2148,6 +2181,20 @@ nonebot2 = ">=2.3.3"
 psutil = ">=6.0.0"
 py-cpuinfo = ">=9.0.0"
 yarl = ">=1.9.4"
+
+[[package]]
+name = "nonebot-plugin-pong"
+version = "0.1.2"
+description = "ping -> pong"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "nonebot_plugin_pong-0.1.2-py3-none-any.whl", hash = "sha256:ae15afbe087ee6c391d8ad9741fc0194c9370ad2b948b372752b01c6783748cb"},
+    {file = "nonebot_plugin_pong-0.1.2.tar.gz", hash = "sha256:8bc2047d50bfd5c596dd40a4599129f4d801ed1d6cf98002669c1e1c4bd9c6fa"},
+]
+
+[package.dependencies]
+nonebot2 = ">=2.3.0,<3.0.0"
 
 [[package]]
 name = "nonebot-plugin-sentry"
@@ -4040,4 +4087,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a0b6b12ed0f94ac890527958116df2753967209c3f8304a1add93a0cc9a88c45"
+content-hash = "4ec502d23d29d1655c65896cfe3be03e2f052d4210cc65630b04914bf200508e"
