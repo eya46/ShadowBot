@@ -92,7 +92,7 @@ async def _(event: Event, matcher: Matcher, state: T_State, voice_api: Annotated
     if speaker is None or text is None:
         return
 
-    await matcher.send(
+    await matcher.finish(
         MessageSegment.record(
             str(
                 URL(voice_api).with_query(
