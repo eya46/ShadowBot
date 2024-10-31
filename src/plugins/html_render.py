@@ -53,6 +53,8 @@ html_render = on_alconna(
     )
 )
 
+html_render.shortcut("r", prefix=True)
+
 
 @html_render.handle()
 async def _(
