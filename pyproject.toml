@@ -32,6 +32,7 @@ nonebot-plugin-picstatus = "^2.1.2"
 nonebot-plugin-nezha = "^0.5.1"
 nonebot-plugin-inspect = ">=0.2.0"
 nonebot-plugin-wakatime = "^0.2.6"
+nonebot-plugin-zxpix = "^0.1.4"
 
 # 其它依赖
 emoji = "^2.10.1"
