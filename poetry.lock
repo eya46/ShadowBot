@@ -2114,13 +2114,13 @@ typing-extensions = ">=4.0.0,<5.0.0"
 
 [[package]]
 name = "nonebot-plugin-mmm"
-version = "0.1.7"
+version = "0.2.0"
 description = "Bot的消息也是消息!"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_plugin_mmm-0.1.7-py3-none-any.whl", hash = "sha256:78d499957024959f2c3b26e1fea61cd9879e536afc4d1892dc24b2958322c69e"},
-    {file = "nonebot_plugin_mmm-0.1.7.tar.gz", hash = "sha256:e09823570200288248f0a8fa0c75c0555b64bb40d3fba34314ceba091f2d00c6"},
+    {file = "nonebot_plugin_mmm-0.2.0-py3-none-any.whl", hash = "sha256:f77004b43ba86bd8ea5b34a2fea74d8b98737973e85a827cf14ba96e0822ae83"},
+    {file = "nonebot_plugin_mmm-0.2.0.tar.gz", hash = "sha256:076174873d33813b0843d3441c0ab2fbeed98079cbd3eedbef19feee39e8c121"},
 ]
 
 [package.dependencies]
@@ -4111,4 +4111,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "33b1feedca207b9ac2f8b033fbe41a04f11ebe62c6a0b4230d2ab763393fb72e"
+content-hash = "aafbcc40d1c5e465d1b6e6316f6063c7f2014bf43739432fda0610e359ef8115"

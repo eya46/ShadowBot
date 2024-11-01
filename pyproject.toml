@@ -15,7 +15,7 @@ nonebot-adapter-onebot = ">=2.4.6"
 nonebot-adapter-telegram = "^0.1.0b19"
 
 # 基础
-nonebot-plugin-mmm = "^0.1.7"
+nonebot-plugin-mmm = "^0.2.0"
 nonebot-plugin-pong = "^0.1.2"
 nonebot-plugin-omb = "^0.1.7"
 
