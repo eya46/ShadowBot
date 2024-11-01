@@ -8,7 +8,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
-nonebot2 = { extras = ["fastapi", "httpx", "websockets"], version = "^2.3.3" }
+nonebot2 = { extras = ["fastapi", "httpx", "websockets"], version = "^2.4.0" }
 
 # 适配器
 nonebot-adapter-onebot = ">=2.4.6"
@@ -32,7 +32,7 @@ nonebot-plugin-picstatus = "^2.1.2"
 nonebot-plugin-nezha = "^0.5.1"
 nonebot-plugin-inspect = ">=0.2.0"
 nonebot-plugin-wakatime = "^0.2.6"
-nonebot-plugin-zxpix = ">=0.1.7"
+nonebot-plugin-zxpix = ">=0.1.9"
 
 # 其它依赖
 emoji = "^2.10.1"

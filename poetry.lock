@@ -2380,13 +2380,13 @@ tests = ["aiomysql (>=0.2.0)", "asyncpg (>=0.29.0)", "cryptography (>=43.0.0)", 
 
 [[package]]
 name = "nonebot-plugin-zxpix"
-version = "0.1.7"
+version = "0.1.9"
 description = "真寻PIX图库"
 optional = false
 python-versions = "<4.0,>=3.10"
 files = [
-    {file = "nonebot_plugin_zxpix-0.1.7-py3-none-any.whl", hash = "sha256:c11478c36f10b47fa5e35c4c814dc014a62f5441a6c0991bdb6677ce97dca59c"},
-    {file = "nonebot_plugin_zxpix-0.1.7.tar.gz", hash = "sha256:102e0d14d574b826d2f059d91ba5491c7927e9a65a060e1878cbe49df2343fa2"},
+    {file = "nonebot_plugin_zxpix-0.1.9-py3-none-any.whl", hash = "sha256:a66d43db87ca89a30f5585676db4178db6b8c09549d552174c7e2c9bb4d3fdfc"},
+    {file = "nonebot_plugin_zxpix-0.1.9.tar.gz", hash = "sha256:a8ffc0450a3ecf916fcce74563fb5d7952bf758784c17e5ad9e34aee4ea67acc"},
 ]
 
 [package.dependencies]
@@ -2401,16 +2401,18 @@ strenum = ">=0.4.15,<0.5.0"
 
 [[package]]
 name = "nonebot2"
-version = "2.3.3"
+version = "2.4.0"
 description = "An asynchronous python bot framework."
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot2-2.3.3-py3-none-any.whl", hash = "sha256:5bc8d073091347f29c4a1a2f927c24a8941e5d286c77139376259318b9bbfc68"},
-    {file = "nonebot2-2.3.3.tar.gz", hash = "sha256:4fa7707de5d708c27cc49493bc78a07fee2ba01f5516835a2ea5fbebb49b9dfa"},
+    {file = "nonebot2-2.4.0-py3-none-any.whl", hash = "sha256:7c712e05561afa4795c9135a5b27a43d076220f4538ffec518e68c344e3e51d4"},
+    {file = "nonebot2-2.4.0.tar.gz", hash = "sha256:4b10e33d389847500c9bde9ef3c5533b604a90ca1529750245f1aaf82b28f1e1"},
 ]
 
 [package.dependencies]
+anyio = ">=4.4.0,<5.0.0"
+exceptiongroup = ">=1.2.2,<2.0.0"
 fastapi = {version = ">=0.93.0,<1.0.0", optional = true, markers = "extra == \"fastapi\" or extra == \"all\""}
 httpx = {version = ">=0.20.0,<1.0.0", extras = ["http2"], optional = true, markers = "extra == \"httpx\" or extra == \"all\""}
 loguru = ">=0.6.0,<1.0.0"
@@ -4109,4 +4111,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6b133a809b6eb4162e561d6d2c7d33258fd77fae615b2a465d807f0d7739081d"
+content-hash = "33b1feedca207b9ac2f8b033fbe41a04f11ebe62c6a0b4230d2ab763393fb72e"
