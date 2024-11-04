@@ -17,7 +17,7 @@ nonebot-adapter-telegram = "^0.1.0b19"
 # 基础
 nonebot-plugin-mmm = "^0.2.1"
 nonebot-plugin-pong = "^0.1.2"
-nonebot-plugin-omb = "^0.1.7"
+nonebot-plugin-omb = "^0.1.8"
 
 # 插件
 nonebot-plugin-orm = { extras = ["asyncpg", "postgresql"], version = "^0.7.6" }
@@ -32,7 +32,7 @@ nonebot-plugin-picstatus = "^2.1.2"
 nonebot-plugin-nezha = "^0.5.1"
 nonebot-plugin-inspect = ">=0.2.0"
 nonebot-plugin-wakatime = "^0.2.6"
-nonebot-plugin-zxpix = ">=0.1.9"
+nonebot-plugin-zxpix = "^0.2.0"
 
 # 其它依赖
 emoji = "^2.10.1"
@@ -51,7 +51,7 @@ ormsgpack = "^1.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.6.3"
+ruff = "^0.7.1"
 
 [tool.nonebot]
 plugins = ["nonebot_plugin_chatrecorder"]
