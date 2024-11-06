@@ -2145,13 +2145,13 @@ nonebot2 = {version = ">=2.3.0", extras = ["httpx"]}
 
 [[package]]
 name = "nonebot-plugin-omb"
-version = "0.1.8"
+version = "0.1.9"
 description = "ohh my bot!"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_plugin_omb-0.1.8-py3-none-any.whl", hash = "sha256:d4e1353141d62e9e1a003cd2f53379a33c66cf239c376a11d056d12ba2fb367f"},
-    {file = "nonebot_plugin_omb-0.1.8.tar.gz", hash = "sha256:439ac4071dfe41be6646a6166a5e588db800ad2a8f38f6fa0b5859d497d598bd"},
+    {file = "nonebot_plugin_omb-0.1.9-py3-none-any.whl", hash = "sha256:8ec4f1c145d1ea65c57ecab36c22ac11a7960781f380f912f8f7e857cceed6dd"},
+    {file = "nonebot_plugin_omb-0.1.9.tar.gz", hash = "sha256:70e71503a9d451c9ee06e25e11d33d17edd5cd57e1e43919f9282330f90064b5"},
 ]
 
 [package.dependencies]
@@ -4110,4 +4110,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b37eb0c0d7dbc65a60918bfd5ce29e3536db2fc940859bb33c341c86332ce25f"
+content-hash = "e4efdf485a8d808f9c305080aa5adf5f3c525d43ff84c36de1be4f840e92e21a"
