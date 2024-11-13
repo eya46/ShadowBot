@@ -34,6 +34,7 @@ nonebot.load_plugin("nonebot_plugin_inspect")
 nonebot.load_plugin("nonebot_plugin_wakatime")
 nonebot.load_plugin("nonebot_plugin_pong")
 nonebot.load_plugin("nonebot_plugin_zxpix")
+nonebot.load_plugin("nonebot_plugin_memes")
 logger.success("加载完成: pip/packages")
 
 if getenv("ENVIRONMENT") != "dev":

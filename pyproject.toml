@@ -32,7 +32,8 @@ nonebot-plugin-picstatus = "^2.1.2"
 nonebot-plugin-nezha = "^0.5.1"
 nonebot-plugin-inspect = ">=0.2.0"
 nonebot-plugin-wakatime = "^0.2.6"
-nonebot-plugin-zxpix = "^0.2.0"
+nonebot-plugin-zxpix = "^0.2.1"
+nonebot-plugin-memes = "^0.7.11"
 
 # 其它依赖
 emoji = "^2.10.1"
@@ -47,6 +48,7 @@ fake-useragent = "^1.5.1"
 club255 = "^0.1.2"
 lxml = "^5.3.0"
 ormsgpack = "^1.6.0"
+
 
 
 
