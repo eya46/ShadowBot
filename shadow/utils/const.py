@@ -1,5 +1,6 @@
 from typing import TypeVar
 
+from nonebot import get_driver
 from nonebot.permission import SuperUser
 from nonebot.internal.rule import Rule
 
@@ -14,3 +15,5 @@ class Undefined:
 
 SuperUserObj = SuperUser()
 SuperUserRule = Rule(SuperUserObj)
+
+superusers = get_driver().config.superusers
