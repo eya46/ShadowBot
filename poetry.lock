@@ -248,17 +248,17 @@ zookeeper = ["kazoo"]
 
 [[package]]
 name = "arclet-alconna"
-version = "1.8.31"
+version = "1.8.34"
 description = "A High-performance, Generality, Humane Command Line Arguments Parser Library."
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "arclet_alconna-1.8.31-py3-none-any.whl", hash = "sha256:94e015163649b41af7a880fef7165ad85df6e2c812129de7d680d87d7b5e7b52"},
-    {file = "arclet_alconna-1.8.31.tar.gz", hash = "sha256:2d621068fc79e2febe0cece5512bd79bb207071b8fbb56e61b2a0565489c8551"},
+    {file = "arclet_alconna-1.8.34-py3-none-any.whl", hash = "sha256:8406ffbdfe4230c636360b42508e13b867ebb372a0c6a86cb165a6bfd58a2c1b"},
+    {file = "arclet_alconna-1.8.34.tar.gz", hash = "sha256:93f7c5f9072aaf1bbf23bad6bacbd4251580694fd2850ff77981fff689933c4b"},
 ]
 
 [package.dependencies]
-nepattern = ">=0.7.6,<1.0.0"
+nepattern = ">=0.7.7,<1.0.0"
 tarina = ">=0.6.1,<0.7.0"
 typing-extensions = ">=4.5.0"
 
@@ -2333,13 +2333,13 @@ wcwidth = ">=0.2,<1.0"
 
 [[package]]
 name = "nepattern"
-version = "0.7.6"
+version = "0.7.7"
 description = "a complex pattern, support typing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "nepattern-0.7.6-py3-none-any.whl", hash = "sha256:233d0befecc190f228ded3651a85faaf53f1308bba40ab8ddec379d0d3c88051"},
-    {file = "nepattern-0.7.6.tar.gz", hash = "sha256:07bd5b2f3b9b9739b703bf723ffd642ca93738a32df7b699d57d6f338d46bad0"},
+    {file = "nepattern-0.7.7-py3-none-any.whl", hash = "sha256:2d66f964333f42df7971390da4fb98dfed1e8b769236f305c28a83c0bcda849a"},
+    {file = "nepattern-0.7.7.tar.gz", hash = "sha256:6667f888457e78937998f9412eb70ad16d220464d2d77850dd2b05e9ecfb3207"},
 ]
 
 [package.dependencies]
@@ -2381,20 +2381,20 @@ pydantic = ">=2.0.3,<2.5.0 || >2.5.0,<2.5.1 || >2.5.1,<3.0.0"
 
 [[package]]
 name = "nonebot-plugin-alconna"
-version = "0.53.1"
+version = "0.54.0"
 description = "Alconna Adapter for Nonebot"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "nonebot_plugin_alconna-0.53.1-py3-none-any.whl", hash = "sha256:a7734d4c7f1b2fedec586b7d235da119ffaa23d0e17a8aa0a0acc0e76a1662d0"},
-    {file = "nonebot_plugin_alconna-0.53.1.tar.gz", hash = "sha256:dc9eef228bb819d05ce9816f8a5a1bead455ee85d1ea7d5e409f9fb11665805e"},
+    {file = "nonebot_plugin_alconna-0.54.0-py3-none-any.whl", hash = "sha256:d117c6e2906a7ca27e004ac21b6c7ce96e3a7a4903b0fddd879358a1d690b49c"},
+    {file = "nonebot_plugin_alconna-0.54.0.tar.gz", hash = "sha256:3e80ff59e997b386af65785b7d37b56ebabe7cd52236d603bbdf97b85f8151d6"},
 ]
 
 [package.dependencies]
-arclet-alconna = ">=1.8.31,<2.0"
+arclet-alconna = ">=1.8.34,<2.0"
 arclet-alconna-tools = ">=0.7.10"
 importlib-metadata = ">=4.13.0"
-nepattern = ">=0.7.4,<1.0"
+nepattern = ">=0.7.7,<1.0"
 nonebot-plugin-waiter = ">=0.6.0"
 nonebot2 = ">=2.3.0"
 tarina = ">=0.6.3,<0.7"
@@ -2558,13 +2558,13 @@ rapidfuzz = ">=3.9.0,<4.0.0"
 
 [[package]]
 name = "nonebot-plugin-mmm"
-version = "0.2.1"
+version = "0.2.2"
 description = "Bot的消息也是消息!"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_plugin_mmm-0.2.1-py3-none-any.whl", hash = "sha256:dc938ef7cf3a762d7b4e1cb4815db704784a6c794e06f001e331a6f8b5b4fac6"},
-    {file = "nonebot_plugin_mmm-0.2.1.tar.gz", hash = "sha256:561d661ad931323f72ca184711f6e827205fe1c482b5d4ad0b3fdb9d671c4429"},
+    {file = "nonebot_plugin_mmm-0.2.2-py3-none-any.whl", hash = "sha256:269898489f005b7d1be33381a9e8b356d3d9c800b3afdaa73e2d6f5e9b5105e4"},
+    {file = "nonebot_plugin_mmm-0.2.2.tar.gz", hash = "sha256:e2e79fe9402cb5cb80e8bf6373bc38bd8d17d2217a826b334f2f93c0742b55c6"},
 ]
 
 [package.dependencies]
@@ -2823,13 +2823,13 @@ tests = ["aiomysql (>=0.2.0)", "asyncpg (>=0.29.0)", "cryptography (>=43.0.0)", 
 
 [[package]]
 name = "nonebot-plugin-zxpix"
-version = "0.2.2"
+version = "0.2.3"
 description = "真寻PIX图库"
 optional = false
 python-versions = "<4.0,>=3.10"
 files = [
-    {file = "nonebot_plugin_zxpix-0.2.2-py3-none-any.whl", hash = "sha256:2ab4cea30290c345f7676c956923d6d104a5bd2aec677157396b7b4d6622021f"},
-    {file = "nonebot_plugin_zxpix-0.2.2.tar.gz", hash = "sha256:976874789bc026e8820c5a228a8e8ebe6fe9b5a14c6dedbbe037b8f17a5fcea8"},
+    {file = "nonebot_plugin_zxpix-0.2.3-py3-none-any.whl", hash = "sha256:8e4466f53287a74cece6abd011d29239e16a7fb49a944537ad46a1c4763f3a55"},
+    {file = "nonebot_plugin_zxpix-0.2.3.tar.gz", hash = "sha256:da1ad5a4b3a11be208256d136a105ae839fb0fcb944a5c9c74bfce82213e29a8"},
 ]
 
 [package.dependencies]
@@ -5070,4 +5070,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "54a5394f9c43f09eb07e5ee13ab35f5d432fcb2d495e962938d9ffb87f2c1ac2"
+content-hash = "1307b6be35554ad67b5b9125a6bec1db59f2a40108c39ef22d27d2801aa93193"
