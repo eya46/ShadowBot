@@ -156,7 +156,9 @@ class PanelApp:
             )
             return resp.json()
 
-    async def api_protected_instance_outputlog(self, uuid: str, daemon_id: str, size: int | None = None) -> dict:
+    async def api_protected_instance_outputlog(
+        self, uuid: str, daemon_id: str, size: int | None | Literal[""] = None
+    ) -> dict:
         """size单位应该是字节"""
         if size is None:
             size = ""
