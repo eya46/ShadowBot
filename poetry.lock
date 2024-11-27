@@ -2365,13 +2365,13 @@ typing-extensions = ">=4.0.0,<5.0.0"
 
 [[package]]
 name = "nonebot-adapter-telegram"
-version = "0.1.0b19"
+version = "0.1.0b20"
 description = "Telegram Adapter for NoneBot2"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot-adapter-telegram-0.1.0b19.tar.gz", hash = "sha256:b741027a1b4828d69d2191e880b6e7919a342071e9bac0dcf5db58b44884b33f"},
-    {file = "nonebot_adapter_telegram-0.1.0b19-py3-none-any.whl", hash = "sha256:59d0f63a49487c9558c99709958c9392243c2fb27b8032b830afb63b775f0a54"},
+    {file = "nonebot-adapter-telegram-0.1.0b20.tar.gz", hash = "sha256:fc17df61cbdb3162f29dbada1e5712b26f37c185da87602b613694bca32c9ada"},
+    {file = "nonebot_adapter_telegram-0.1.0b20-py3-none-any.whl", hash = "sha256:a90acf29b8a9c8a16d4aaa93fb930debde4648d514f2050af945e973cd37a8d4"},
 ]
 
 [package.dependencies]
@@ -5070,4 +5070,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "1307b6be35554ad67b5b9125a6bec1db59f2a40108c39ef22d27d2801aa93193"
+content-hash = "4b87dc625b4d434c3bc4a15ecc293e80ad8cc836764e34850834e86b15c42ccd"
