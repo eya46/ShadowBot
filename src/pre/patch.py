@@ -8,8 +8,8 @@ from nonebot.dependencies import Dependent
 import nonebot_plugin_alconna
 from nonebot.internal.params import Depends
 from nonebot.internal.adapter import Event
-from nonebot.internal.matcher import Matcher, current_event
-from nonebot.adapters.onebot.v11 import Bot, MessageEvent, PrivateMessageEvent
+from nonebot.internal.matcher import Matcher
+from nonebot.adapters.onebot.v11 import MessageEvent
 
 from shadow.exception import catch
 from shadow.utils.patch import patch
@@ -40,13 +40,3 @@ def append_handler(cls: Matcher, handler: T_Handler, parameterless: Iterable[Any
     )
     cls.handlers.append(handler_)
     return handler_
-
-
-@Bot.on_calling_api
-async def patch_send(bot: Bot, api: str, data: dict[str, Any]):
-    if api not in ["send_msg", "send_private_msg"]:
-        return
-    event = current_event.get()
-    if not isinstance(event, PrivateMessageEvent) or event.self_id != event.user_id:
-        return
-    data["user_id"] = getattr(event, "target_id", event.user_id)
