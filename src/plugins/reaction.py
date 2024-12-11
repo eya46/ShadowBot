@@ -21,6 +21,11 @@ async def _(bot: Bot, event: GroupMessageEvent, message: Message = CommandArg())
         except:
             pass
 
+    try:
+        await bot.delete_msg(message_id=event.message_id)
+    except:
+        logger.error(f"delete message failed {event.message_id}")
+
     logger.info(f"reaction: {reply.message_id} {event.message_id} {emojiId} {message.get('face', 1)}")
     if emojiId is None:
         return await bot.call_api("set_msg_emoji_like", message_id=event.message_id, emoji_id=38)
