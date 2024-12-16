@@ -2479,13 +2479,13 @@ yaml = ["pyyaml (>=6.0)"]
 
 [[package]]
 name = "nonebot-plugin-htmlrender"
-version = "0.4.0"
+version = "0.5.0"
 description = "通过浏览器渲染图片"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_plugin_htmlrender-0.4.0-py3-none-any.whl", hash = "sha256:abf94025c93b7918acf8b1d5d353a6ba40368323d793cb4bde43ae9d5ce6256e"},
-    {file = "nonebot_plugin_htmlrender-0.4.0.tar.gz", hash = "sha256:a5827039993eba05c90e26e03f42e0d230a180b201a5d509d81ab22c690395e6"},
+    {file = "nonebot_plugin_htmlrender-0.5.0-py3-none-any.whl", hash = "sha256:29af10ec95890ec8cb3331f1cb77b702b1cb6eaf5f1df9f7bf585dd8faf9b8f4"},
+    {file = "nonebot_plugin_htmlrender-0.5.0.tar.gz", hash = "sha256:254fb1024cb1d8c097332bca767107573b799735c79c9196167b5acccb660a22"},
 ]
 
 [package.dependencies]
@@ -2558,13 +2558,13 @@ rapidfuzz = ">=3.9.0,<4.0.0"
 
 [[package]]
 name = "nonebot-plugin-mmm"
-version = "0.2.2"
+version = "0.2.3"
 description = "Bot的消息也是消息!"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "nonebot_plugin_mmm-0.2.2-py3-none-any.whl", hash = "sha256:269898489f005b7d1be33381a9e8b356d3d9c800b3afdaa73e2d6f5e9b5105e4"},
-    {file = "nonebot_plugin_mmm-0.2.2.tar.gz", hash = "sha256:e2e79fe9402cb5cb80e8bf6373bc38bd8d17d2217a826b334f2f93c0742b55c6"},
+    {file = "nonebot_plugin_mmm-0.2.3-py3-none-any.whl", hash = "sha256:ed6ed009a431408464f5185fb6a7a627024255b18f18bb68d4221cc5f1e40f07"},
+    {file = "nonebot_plugin_mmm-0.2.3.tar.gz", hash = "sha256:cf8ff010f3d38c293c709744d44db426fd93fe97b4331b3afcc57bf2c82af2c2"},
 ]
 
 [package.dependencies]
@@ -5070,4 +5070,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4b87dc625b4d434c3bc4a15ecc293e80ad8cc836764e34850834e86b15c42ccd"
+content-hash = "dfd73d1cffd7a0e1ecc53284f660a2533ee272e37ce647ae7ad6865340afa4c7"
